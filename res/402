@@ -1,4 +1,8 @@
-402
-Payment Required
+{
+    Code:402,
+Name:"Payment Required",
+Description:`
 
 Reserved for future use.
+`,
+},

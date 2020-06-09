@@ -1,6 +1,10 @@
-408
-Request Timeout
+{
+    Code:408,
+Name:"Request Timeout",
+Description:`
 
 The server did not receive a complete request message within the time that it was prepared to wait.
 
 A server SHOULD send the &quot;close&quot; connection option<sup><a href="#ref-1">1</a></sup> in the response, since 408 implies that the server has decided to close the connection rather than continue waiting. If the client has an outstanding request in transit, the client MAY repeat that request on a new connection.
+`,
+},

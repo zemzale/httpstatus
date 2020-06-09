@@ -1,5 +1,7 @@
-511
-Network Authentication Required
+{
+    Code:511,
+Name:"Network Authentication Required",
+Description:`
 
 The client needs to authenticate to gain network access.
 
@@ -38,3 +40,5 @@ Content-Type: text/html
 &lt;/html&gt;
 </code></pre>
 Here, the 511 status code assures that non-browser clients will not interpret the response as being from the origin server, and the META HTML element redirects the user agent to the login server.
+`,
+},

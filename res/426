@@ -1,5 +1,7 @@
-426
-Upgrade Required
+{
+    Code:426,
+Name:"Upgrade Required",
+Description:`
 
 The server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol.
 
@@ -13,3 +15,5 @@ Content-Length: 53
 Content-Type: text/plain
 
 This service requires use of the HTTP/3.0 protocol.
+`,
+},

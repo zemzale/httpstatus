@@ -1,5 +1,7 @@
-431
-Request Header Fields Too Large
+{
+    Code:431,
+Name:"Request Header Fields Too Large",
+Description:`
 
 The server is unwilling to process the request because its header fields are too large. The request MAY be resubmitted after reducing the size of the request header fields.
 
@@ -20,3 +22,5 @@ Content-Type: text/html
 &lt;/html&gt;
 </code></pre>
 Responses with the 431 status code MUST NOT be stored by a cache.
+`,
+},

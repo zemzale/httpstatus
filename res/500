@@ -1,4 +1,8 @@
-500
-Internal Server Error
+{
+    Code:500,
+Name:"Internal Server Error",
+Description:`
 
 The server encountered an unexpected condition that prevented it from fulfilling the request.
+`,
+},

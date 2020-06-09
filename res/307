@@ -1,5 +1,7 @@
-307
-Temporary Redirect
+{
+    Code:307,
+Name:"Temporary Redirect",
+Description:`
 
 The target resource resides temporarily under a different URI and the user agent MUST NOT change the request method if it performs an automatic redirection to that URI.
 
@@ -8,3 +10,5 @@ Since the redirection can change over time, the client ought to continue using t
 The server SHOULD generate a Location header field in the response containing a URI reference for the different URI. The user agent MAY use the Location field value for automatic redirection. The server&#39;s response payload usually contains a short hypertext note with a hyperlink to the different URI(s).
 
 Note: This status code is similar to 302 Found, except that it does not allow changing the request method from POST to GET. This specification defines no equivalent counterpart for <a href="/301">301 Moved Permanently</a> (<a href="https://tools.ietf.org/html/rfc7238">RFC7238</a>, however, proposes defining the status code <a href="/308">308 Permanent Redirect</a> for this purpose).
+`,
+},

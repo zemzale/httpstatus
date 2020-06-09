@@ -1,5 +1,7 @@
-203
-Non-authoritative Information
+{
+    Code:203,
+Name:"Non-authoritative Information",
+Description:`
 
 The request was successful but the enclosed payload has been modified from that of the origin server&#39;s <a href="/200">200 OK</a> response by a transforming proxy<sup><a href="#ref-1">1</a></sup>.
 
@@ -8,3 +10,5 @@ This status code allows the proxy to notify recipients when a transformation has
 The 203 response is similar to the Warning code of 214 Transformation Applied<sup><a href="#ref-2">2</a></sup>, which has the advantage of being applicable to responses with any status code.
 
 A 203 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls<sup><a href="#ref-3">3</a></sup>.
+`,
+},

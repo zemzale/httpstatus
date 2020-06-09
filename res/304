@@ -1,5 +1,7 @@
-304
-Not Modified
+{
+    Code:304,
+Name:"Not Modified",
+Description:`
 
 A conditional GET or HEAD request has been received and would have resulted in a <a href="/200">200 OK</a> response if it were not for the fact that the condition evaluated to false.
 
@@ -12,3 +14,5 @@ Since the goal of a 304 response is to minimize information transfer when the re
 Requirements on a cache that receives a 304 response are defined in <a href="https://tools.ietf.org/html/rfc7234#section-4.3.4">Section 4.3.4 of RFC7234</a>. If the conditional request originated with an outbound client, such as a user agent with its own cache sending a conditional GET to a shared proxy, then the proxy SHOULD forward the 304 response to that client.
 
 A 304 response cannot contain a message-body; it is always terminated by the first empty line after the header fields.
+`,
+},

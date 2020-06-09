@@ -1,5 +1,7 @@
-301
-Moved Permanently
+{
+    Code:301,
+Name:"Moved Permanently",
+Description:`
 
 The target resource has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs.
 
@@ -10,3 +12,5 @@ The server SHOULD generate a Location header field in the response containing a 
 Note: For historical reasons, a user agent MAY change the request method from POST to GET for the subsequent request. If this behavior is undesired, the <a href="/307">307 Temporary Redirect</a> status code can be used instead.
 
 A 301 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls<sup><a href="#ref-1">1</a></sup>.
+`,
+},

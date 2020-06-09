@@ -1,5 +1,7 @@
-200
-OK
+{
+    Code:200,
+Name:"OK",
+Description:`
 
 The request has succeeded.
 
@@ -18,3 +20,5 @@ The payload sent in a 200 response depends on the request method. For the method
 Aside from responses to CONNECT, a 200 response always has a payload, though an origin server MAY generate a payload body of zero length. If no payload is desired, an origin server ought to send <a href="/204">204 No Content</a> instead.  For CONNECT, no payload is allowed because the successful result is a tunnel, which begins immediately after the 200 response header section.
 
 A 200 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls<sup><a href="#ref-1">1</a></sup>.
+`,
+},
