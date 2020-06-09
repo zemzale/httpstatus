@@ -1,5 +1,6 @@
-      207
-      Multi-Status
+207
+Multi-Status
+
 A Multi-Status response conveys information about multiple resources in situations where multiple status codes might be appropriate.
 
 The default Multi-Status response body is a text/xml or application/xml HTTP entity with a &#39;multistatus&#39; root element. Further elements contain 200, 300, 400, and 500 series status codes generated during the method invocation. 100 series status codes SHOULD NOT be recorded in a &#39;response&#39; XML element.

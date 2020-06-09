@@ -1,5 +1,6 @@
-      511
-      Network Authentication Required
+511
+Network Authentication Required
+
 The client needs to authenticate to gain network access.
 
 The response representation SHOULD contain a link to a resource that allows the user to submit credentials (e.g., with an HTML form).

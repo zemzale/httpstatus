@@ -1,5 +1,6 @@
-      423
-      Locked
+423
+Locked
+
 The source or destination resource of a method is locked.
 
 This response SHOULD contain an appropriate precondition or postcondition code, such as &#39;lock-token-submitted&#39; or &#39;no-conflicting-lock&#39;.

@@ -1,5 +1,6 @@
-      429
-      Too Many Requests
+429
+Too Many Requests
+
 The user has sent too many requests in a given amount of time (&quot;rate limiting&quot;).
 
 The response representations SHOULD include details explaining the condition, and MAY include a Retry-After header indicating how long to wait before making a new request.

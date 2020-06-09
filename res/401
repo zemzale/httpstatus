@@ -1,5 +1,6 @@
-      401
-      Unauthorized
+401
+Unauthorized
+
 The request has not been applied because it lacks valid authentication credentials for the target resource.
 
 The server generating a 401 response MUST send a WWW-Authenticate header field<sup><a href="#ref-1">1</a></sup> containing at least one challenge applicable to the target resource.

@@ -1,5 +1,6 @@
-      200
-      OK
+200
+OK
+
 The request has succeeded.
 
 The payload sent in a 200 response depends on the request method. For the methods defined by this specification, the intended meaning of the payload can be summarized as:

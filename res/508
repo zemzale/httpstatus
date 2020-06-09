@@ -1,3 +1,4 @@
-      508
-      Loop Detected
+508
+Loop Detected
+
 The server terminated an operation because it encountered an infinite loop while processing a request with &quot;Depth: infinity&quot;. This status indicates that the entire operation failed.

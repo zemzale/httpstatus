@@ -1,5 +1,6 @@
-      410
-      Gone
+410
+Gone
+
 The target resource is no longer available at the origin server and that this condition is likely to be permanent.
 
 If the origin server does not know, or has no facility to determine, whether or not the condition is permanent, the status code <a href="/404">404 Not Found</a> ought to be used instead.
