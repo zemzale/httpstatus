@@ -1,4 +1,4 @@
-100 : bad
+100 : good
 101 : bad
 102 : good
 200 : bad
