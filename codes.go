@@ -40,26 +40,19 @@ Methods can potentially take a long period of time to process, especially method
 	{
 		Code: 200,
 		Name: "OK",
-		Description: `
-
-The request has succeeded.
-
+		Description: `The request has succeeded.
 The payload sent in a 200 response depends on the request method. For the methods defined by this specification, the intended meaning of the payload can be summarized as:
-<ul>
-<li><code>GET</code> a representation of the target resource</li>
-<li><code>HEAD</code> the same representation as <code>GET</code>, but without the representation data</li>
-<li><code>POST</code> a representation of the status of, or results obtained from, the action;<ul>
-<li><code>PUT</code> <code>DELETE</code> a representation of the status of the action;</li>
-<li><code>OPTIONS</code> a representation of the communications options;</li>
-<li><code>TRACE</code> a representation of the request message as received by the end server.</li>
-</ul>
-</li>
-</ul>
+GET     a representation of the target resource
+HEAD    the same representation as GET, but without the representation data
+POST    a representation of the status of, or results obtained from, the action
+PUT     a representation of the status of the action
+DELETE  a representation of the status of the action
+OPTIONS a representation of the communications options
+TRACE   a representation of the request message as received by the end server
 
-Aside from responses to CONNECT, a 200 response always has a payload, though an origin server MAY generate a payload body of zero length. If no payload is desired, an origin server ought to send <a href="/204">204 No Content</a> instead.  For CONNECT, no payload is allowed because the successful result is a tunnel, which begins immediately after the 200 response header section.
+Aside from responses to CONNECT, a 200 response always has a payload, though an origin server MAY generate a payload body of zero length. If no payload is desired, an origin server ought to send 204 No Content instead. For CONNECT, no payload is allowed because the successful result is a tunnel, which begins immediately after the 200 response header section.
 
-A 200 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls<sup><a href="#ref-1">1</a></sup>.
-`,
+A 200 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls.`,
 	},
 	{
 		Code: 201,
