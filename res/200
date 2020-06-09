@@ -1,5 +1,8 @@
-      <h1><span>200</span> OK</h1><p>The request has succeeded.</p>
-<p>The payload sent in a 200 response depends on the request method. For the methods defined by this specification, the intended meaning of the payload can be summarized as:</p>
+      200
+      OK
+The request has succeeded.
+
+The payload sent in a 200 response depends on the request method. For the methods defined by this specification, the intended meaning of the payload can be summarized as:
 <ul>
 <li><code>GET</code> a representation of the target resource</li>
 <li><code>HEAD</code> the same representation as <code>GET</code>, but without the representation data</li>
@@ -10,5 +13,7 @@
 </ul>
 </li>
 </ul>
-<p>Aside from responses to CONNECT, a 200 response always has a payload, though an origin server MAY generate a payload body of zero length. If no payload is desired, an origin server ought to send <a href="/204">204 No Content</a> instead.  For CONNECT, no payload is allowed because the successful result is a tunnel, which begins immediately after the 200 response header section.</p>
-<p>A 200 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls<sup><a href="#ref-1">1</a></sup>.</p>
+
+Aside from responses to CONNECT, a 200 response always has a payload, though an origin server MAY generate a payload body of zero length. If no payload is desired, an origin server ought to send <a href="/204">204 No Content</a> instead.  For CONNECT, no payload is allowed because the successful result is a tunnel, which begins immediately after the 200 response header section.
+
+A 200 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls<sup><a href="#ref-1">1</a></sup>.

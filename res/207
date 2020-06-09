@@ -1,7 +1,15 @@
-      <h1><span>207</span> Multi-Status</h1><p>A Multi-Status response conveys information about multiple resources in situations where multiple status codes might be appropriate.</p>
-<p>The default Multi-Status response body is a text/xml or application/xml HTTP entity with a &#39;multistatus&#39; root element. Further elements contain 200, 300, 400, and 500 series status codes generated during the method invocation. 100 series status codes SHOULD NOT be recorded in a &#39;response&#39; XML element.</p>
-<p>Although &#39;207&#39; is used as the overall response status code, the recipient needs to consult the contents of the multistatus response body for further information about the success or failure of the method execution. The response MAY be used in success, partial success and also in failure situations.</p>
-<p>The &#39;multistatus&#39; root element holds zero or more &#39;response&#39; elements in any order, each with information about an individual resource. Each &#39;response&#39; element MUST have an &#39;href&#39; element to identify the resource.</p>
-<p>A Multi-Status response uses one out of two distinct formats for representing the status:</p>
-<p>1. A &#39;status&#39; element as child of the &#39;response&#39; element indicates the status of the message execution for the identified resource as a whole<sup><a href="#ref-1">1</a></sup>. Some method definitions provide information about specific status codes clients should be prepared to see in a response. However, clients MUST be able to handle other status codes, using the generic rules defined in <a href="https://tools.ietf.org/html/rfc2616#section-10">RFC2616 Section 10</a>.</p>
-<p>2. For PROPFIND and PROPPATCH, the format has been extended using the &#39;propstat&#39; element instead of &#39;status&#39;, providing information about individual properties of a resource.  This format is specific to PROPFIND and PROPPATCH, and is described in detail in <a href="https://tools.ietf.org/html/rfc4918#section-9.1">RFC4918 Section 9.1</a> and <a href="https://tools.ietf.org/html/rfc4918#section-9.2">RFC4918 Section 9.2</a>.</p>
+      207
+      Multi-Status
+A Multi-Status response conveys information about multiple resources in situations where multiple status codes might be appropriate.
+
+The default Multi-Status response body is a text/xml or application/xml HTTP entity with a &#39;multistatus&#39; root element. Further elements contain 200, 300, 400, and 500 series status codes generated during the method invocation. 100 series status codes SHOULD NOT be recorded in a &#39;response&#39; XML element.
+
+Although &#39;207&#39; is used as the overall response status code, the recipient needs to consult the contents of the multistatus response body for further information about the success or failure of the method execution. The response MAY be used in success, partial success and also in failure situations.
+
+The &#39;multistatus&#39; root element holds zero or more &#39;response&#39; elements in any order, each with information about an individual resource. Each &#39;response&#39; element MUST have an &#39;href&#39; element to identify the resource.
+
+A Multi-Status response uses one out of two distinct formats for representing the status:
+
+1. A &#39;status&#39; element as child of the &#39;response&#39; element indicates the status of the message execution for the identified resource as a whole<sup><a href="#ref-1">1</a></sup>. Some method definitions provide information about specific status codes clients should be prepared to see in a response. However, clients MUST be able to handle other status codes, using the generic rules defined in <a href="https://tools.ietf.org/html/rfc2616#section-10">RFC2616 Section 10</a>.
+
+2. For PROPFIND and PROPPATCH, the format has been extended using the &#39;propstat&#39; element instead of &#39;status&#39;, providing information about individual properties of a resource.  This format is specific to PROPFIND and PROPPATCH, and is described in detail in <a href="https://tools.ietf.org/html/rfc4918#section-9.1">RFC4918 Section 9.1</a> and <a href="https://tools.ietf.org/html/rfc4918#section-9.2">RFC4918 Section 9.2</a>.

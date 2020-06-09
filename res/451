@@ -1,6 +1,10 @@
-      <h1><span>451</span> Unavailable For Legal Reasons</h1><p>The server is denying access to the resource as a consequence of a legal demand.</p>
-<p>The server in question might not be an origin server. This type of legal demand typically most directly affects the operations of ISPs and search engines.</p>
-<p>Responses using this status code SHOULD include an explanation, in the response body, of the details of the legal demand: the party making it, the applicable legislation or regulation, and what classes of person and resource it applies to. For example:</p>
+      451
+      Unavailable For Legal Reasons
+The server is denying access to the resource as a consequence of a legal demand.
+
+The server in question might not be an origin server. This type of legal demand typically most directly affects the operations of ISPs and search engines.
+
+Responses using this status code SHOULD include an explanation, in the response body, of the details of the legal demand: the party making it, the applicable legislation or regulation, and what classes of person and resource it applies to. For example:
 <pre><code>HTTP/1.1 451 Unavailable For Legal Reasons
 Link: &lt;https://spqr.example.org/legislatione&gt;; rel=&quot;blocked-by&quot;
 Content-Type: text/html
@@ -17,6 +21,9 @@ Content-Type: text/html
     operated by the People&#39;s Front of Judea.&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>The use of the 451 status code implies neither the existence nor non- existence of the resource named in the request. That is to say, it is possible that if the legal demands were removed, a request for the resource still might not succeed.</p>
-<p>Note that in many cases clients can still access the denied resource by using technical countermeasures such as a VPN or the Tor network.</p>
-<p>A 451 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls; see <a href="https://tools.ietf.org/html/rfc7234">RFC7234</a>.</p>
+</code></pre>
+The use of the 451 status code implies neither the existence nor non- existence of the resource named in the request. That is to say, it is possible that if the legal demands were removed, a request for the resource still might not succeed.
+
+Note that in many cases clients can still access the denied resource by using technical countermeasures such as a VPN or the Tor network.
+
+A 451 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls; see <a href="https://tools.ietf.org/html/rfc7234">RFC7234</a>.

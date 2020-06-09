@@ -1,7 +1,12 @@
-      <h1><span>416</span> Requested Range Not Satisfiable</h1><p>None of the ranges in the request&#39;s Range header field<sup><a href="#ref-1">1</a></sup> overlap the current extent of the selected resource or that the set of ranges requested has been rejected due to invalid ranges or an excessive request of small or overlapping ranges.</p>
-<p>For byte ranges, failing to overlap the current extent means that the first-byte-pos of all of the byte-range-spec values were greater than the current length of the selected representation. When this status code is generated in response to a byte-range request, the sender SHOULD generate a Content-Range header field specifying the current length of the selected representation<sup><a href="#ref-2">2</a></sup>.</p>
-<p>For example:</p>
+      416
+      Requested Range Not Satisfiable
+None of the ranges in the request&#39;s Range header field<sup><a href="#ref-1">1</a></sup> overlap the current extent of the selected resource or that the set of ranges requested has been rejected due to invalid ranges or an excessive request of small or overlapping ranges.
+
+For byte ranges, failing to overlap the current extent means that the first-byte-pos of all of the byte-range-spec values were greater than the current length of the selected representation. When this status code is generated in response to a byte-range request, the sender SHOULD generate a Content-Range header field specifying the current length of the selected representation<sup><a href="#ref-2">2</a></sup>.
+
+For example:
 <pre><code>HTTP/1.1 416 Range Not Satisfiable
 Date: Fri, 20 Jan 2012 15:41:54 GMT
 Content-Range: bytes */47022
-</code></pre><p>Note: Because servers are free to ignore Range, many implementations will simply respond with the entire selected representation in a <a href="/200">200 OK</a> response. That is partly because most clients are prepared to receive a <a href="/200">200 OK</a> to complete the task (albeit less efficiently) and partly because clients might not stop making an invalid partial request until they have received a complete representation. Thus, clients cannot depend on receiving a 416 Range Not Satisfiable response even when it is most appropriate.</p>
+</code></pre>
+Note: Because servers are free to ignore Range, many implementations will simply respond with the entire selected representation in a <a href="/200">200 OK</a> response. That is partly because most clients are prepared to receive a <a href="/200">200 OK</a> to complete the task (albeit less efficiently) and partly because clients might not stop making an invalid partial request until they have received a complete representation. Thus, clients cannot depend on receiving a 416 Range Not Satisfiable response even when it is most appropriate.

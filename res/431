@@ -1,6 +1,10 @@
-      <h1><span>431</span> Request Header Fields Too Large</h1><p>The server is unwilling to process the request because its header fields are too large. The request MAY be resubmitted after reducing the size of the request header fields.</p>
-<p>It can be used both when the set of request header fields in total is too large, and when a single header field is at fault.  In the latter case, the response representation SHOULD specify which header field was too large.</p>
-<p>For example:</p>
+      431
+      Request Header Fields Too Large
+The server is unwilling to process the request because its header fields are too large. The request MAY be resubmitted after reducing the size of the request header fields.
+
+It can be used both when the set of request header fields in total is too large, and when a single header field is at fault.  In the latter case, the response representation SHOULD specify which header field was too large.
+
+For example:
 <pre><code>HTTP/1.1 431 Request Header Fields Too Large
 Content-Type: text/html
 
@@ -13,4 +17,5 @@ Content-Type: text/html
     &lt;p&gt;The &quot;Example&quot; header was too large.&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>Responses with the 431 status code MUST NOT be stored by a cache.</p>
+</code></pre>
+Responses with the 431 status code MUST NOT be stored by a cache.

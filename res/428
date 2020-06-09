@@ -1,6 +1,10 @@
-      <h1><span>428</span> Precondition Required</h1><p>The origin server requires the request to be conditional.</p>
-<p>Its typical use is to avoid the &quot;lost update&quot; problem, where a client GETs a resource&#39;s state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict. By requiring requests to be conditional, the server can assure that clients are working with the correct copies.</p>
-<p>Responses using this status code SHOULD explain how to resubmit the request successfully. For example:</p>
+      428
+      Precondition Required
+The origin server requires the request to be conditional.
+
+Its typical use is to avoid the &quot;lost update&quot; problem, where a client GETs a resource&#39;s state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict. By requiring requests to be conditional, the server can assure that clients are working with the correct copies.
+
+Responses using this status code SHOULD explain how to resubmit the request successfully. For example:
 <pre><code>HTTP/1.1 428 Precondition Required
 Content-Type: text/html
 
@@ -13,4 +17,5 @@ Content-Type: text/html
     &lt;p&gt;This request is required to be conditional; try using &quot;If-Match&quot;.&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>Responses with the 428 status code MUST NOT be stored by a cache.</p>
+</code></pre>
+Responses with the 428 status code MUST NOT be stored by a cache.

@@ -1,1 +1,3 @@
-      <h1><span>599</span> Network Connect Timeout Error</h1><p>This status code is not specified in any RFCs, but is used by some HTTP proxies to signal a network connect timeout behind the proxy to a client in front of the proxy.</p>
+      599
+      Network Connect Timeout Error
+This status code is not specified in any RFCs, but is used by some HTTP proxies to signal a network connect timeout behind the proxy to a client in front of the proxy.

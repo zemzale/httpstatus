@@ -1,6 +1,10 @@
-      <h1><span>429</span> Too Many Requests</h1><p>The user has sent too many requests in a given amount of time (&quot;rate limiting&quot;).</p>
-<p>The response representations SHOULD include details explaining the condition, and MAY include a Retry-After header indicating how long to wait before making a new request.</p>
-<p>For example:</p>
+      429
+      Too Many Requests
+The user has sent too many requests in a given amount of time (&quot;rate limiting&quot;).
+
+The response representations SHOULD include details explaining the condition, and MAY include a Retry-After header indicating how long to wait before making a new request.
+
+For example:
 <pre><code>HTTP/1.1 429 Too Many Requests
 Content-Type: text/html
 Retry-After: 3600
@@ -15,5 +19,7 @@ Retry-After: 3600
     logged in user. Try again soon.&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>Note that this specification does not define how the origin server identifies the user, nor how it counts requests. For example, an origin server that is limiting request rates can do so based upon counts of requests on a per-resource basis, across the entire server, or even among a set of servers. Likewise, it might identify the user by its authentication credentials, or a stateful cookie.</p>
-<p>Responses with the 429 status code MUST NOT be stored by a cache.</p>
+</code></pre>
+Note that this specification does not define how the origin server identifies the user, nor how it counts requests. For example, an origin server that is limiting request rates can do so based upon counts of requests on a per-resource basis, across the entire server, or even among a set of servers. Likewise, it might identify the user by its authentication credentials, or a stateful cookie.
+
+Responses with the 429 status code MUST NOT be stored by a cache.

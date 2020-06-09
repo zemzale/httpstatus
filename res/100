@@ -1,3 +1,7 @@
-      <h1><span>100</span> Continue</h1><p>The initial part of a request has been received and has not yet been rejected by the server. The server intends to send a final response after the request has been fully received and acted upon.</p>
-<p>When the request contains an Expect header field that includes a 100-continue expectation, the 100 response indicates that the server wishes to receive the request payload body<sup><a href="#ref-1">1</a></sup>. The client ought to continue sending the request and discard the 100 response.</p>
-<p>If the request did not contain an Expect header field containing the 100-continue expectation, the client can simply discard this interim response.</p>
+      100
+      Continue
+The initial part of a request has been received and has not yet been rejected by the server. The server intends to send a final response after the request has been fully received and acted upon.
+
+When the request contains an Expect header field that includes a 100-continue expectation, the 100 response indicates that the server wishes to receive the request payload body<sup><a href="#ref-1">1</a></sup>. The client ought to continue sending the request and discard the 100 response.
+
+If the request did not contain an Expect header field containing the 100-continue expectation, the client can simply discard this interim response.

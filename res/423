@@ -1,2 +1,5 @@
-      <h1><span>423</span> Locked</h1><p>The source or destination resource of a method is locked.</p>
-<p>This response SHOULD contain an appropriate precondition or postcondition code, such as &#39;lock-token-submitted&#39; or &#39;no-conflicting-lock&#39;.</p>
+      423
+      Locked
+The source or destination resource of a method is locked.
+
+This response SHOULD contain an appropriate precondition or postcondition code, such as &#39;lock-token-submitted&#39; or &#39;no-conflicting-lock&#39;.

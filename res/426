@@ -1,6 +1,10 @@
-      <h1><span>426</span> Upgrade Required</h1><p>The server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol.</p>
-<p>The server MUST send an Upgrade header field in a 426 response to indicate the required protocol(s)<sup><a href="#ref-1">1</a></sup></p>
-<p>Example:</p>
+      426
+      Upgrade Required
+The server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol.
+
+The server MUST send an Upgrade header field in a 426 response to indicate the required protocol(s)<sup><a href="#ref-1">1</a></sup>
+
+Example:
 <pre><code>HTTP/1.1 426 Upgrade Required
 Upgrade: HTTP/3.0
 Connection: Upgrade

@@ -1,1 +1,3 @@
-      <h1><span>418</span> I'm a teapot</h1><p>Any attempt to brew coffee with a teapot should result in the error code &quot;418 I&#39;m a teapot&quot;. The resulting entity body MAY be short and stout.</p>
+      418
+      > I'm a teapot
+Any attempt to brew coffee with a teapot should result in the error code &quot;418 I&#39;m a teapot&quot;. The resulting entity body MAY be short and stout.

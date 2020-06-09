@@ -1,3 +1,7 @@
-      <h1><span>503</span> Service Unavailable</h1><p>The server is currently unable to handle the request due to a temporary overload or scheduled maintenance, which will likely be alleviated after some delay.</p>
-<p>The server MAY send a Retry-After header field<sup><a href="#ref-1">1</a></sup> to suggest an appropriate amount of time for the client to wait before retrying the request.</p>
-<p>Note: The existence of the 503 status code does not imply that a server has to use it when becoming overloaded. Some servers might simply refuse the connection.</p>
+      503
+      Service Unavailable
+The server is currently unable to handle the request due to a temporary overload or scheduled maintenance, which will likely be alleviated after some delay.
+
+The server MAY send a Retry-After header field<sup><a href="#ref-1">1</a></sup> to suggest an appropriate amount of time for the client to wait before retrying the request.
+
+Note: The existence of the 503 status code does not imply that a server has to use it when becoming overloaded. Some servers might simply refuse the connection.
