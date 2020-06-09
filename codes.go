@@ -19,14 +19,11 @@ If the request did not contain an Expect header field containing the 100-continu
 	{
 		Code: 101,
 		Name: "Switching Protocols",
-		Description: `
-
-The server understands and is willing to comply with the client&#39;s request, via the Upgrade header field<sup><a href="#ref-1">1</a></sup>, for a change in the application protocol being used on this connection.
+		Description: `The server understands and is willing to comply with the client's request, via the Upgrade header field, for a change in the application protocol being used on this connection.
 
 The server MUST generate an Upgrade header field in the response that indicates which protocol(s) will be switched to immediately after the empty line that terminates the 101 response.
 
-It is assumed that the server will only agree to switch protocols when it is advantageous to do so. For example, switching to a newer version of HTTP might be advantageous over older versions, and switching to a real-time, synchronous protocol might be advantageous when delivering resources that use such features.
-`,
+It is assumed that the server will only agree to switch protocols when it is advantageous to do so. For example, switching to a newer version of HTTP might be advantageous over older versions, and switching to a real-time, synchronous protocol might be advantageous when delivering resources that use such features.`,
 	},
 	{
 		Code: 102,
