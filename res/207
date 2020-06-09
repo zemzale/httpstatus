@@ -1,4 +1,3 @@
-      <h2>2&times;&times; Success</h2>
       <h1><span>207</span> Multi-Status</h1><p>A Multi-Status response conveys information about multiple resources in situations where multiple status codes might be appropriate.</p>
 <p>The default Multi-Status response body is a text/xml or application/xml HTTP entity with a &#39;multistatus&#39; root element. Further elements contain 200, 300, 400, and 500 series status codes generated during the method invocation. 100 series status codes SHOULD NOT be recorded in a &#39;response&#39; XML element.</p>
 <p>Although &#39;207&#39; is used as the overall response status code, the recipient needs to consult the contents of the multistatus response body for further information about the success or failure of the method execution. The response MAY be used in success, partial success and also in failure situations.</p>

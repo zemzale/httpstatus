@@ -1,4 +1,3 @@
-      <h2>3&times;&times; Redirection</h2>
       <h1><span>308</span> Permanent Redirect</h1><p>The target resource has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs.</p>
 <p>Clients with link editing capabilities ought to automatically re-link references to the effective request URI<sup><a href="#ref-1">1</a></sup> to one or more of the new references sent by the server, where possible.</p>
 <p>The server SHOULD generate a Location header field<sup><a href="#ref-2">2</a></sup> in the response containing a preferred URI reference for the new permanent URI. The user agent MAY use the Location field value for automatic redirection. The server&#39;s response payload usually contains a short hypertext note with a hyperlink to the new URI(s).</p>

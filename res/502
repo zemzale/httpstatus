@@ -1,2 +1,1 @@
-      <h2>5&times;&times; Server Error</h2>
       <h1><span>502</span> Bad Gateway</h1><p>The server, while acting as a gateway or proxy, received an invalid response from an inbound server it accessed while attempting to fulfill the request.</p>

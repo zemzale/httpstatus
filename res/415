@@ -1,3 +1,2 @@
-      <h2>4&times;&times; Client Error</h2>
       <h1><span>415</span> Unsupported Media Type</h1><p>The origin server is refusing to service the request because the payload is in a format not supported by this method on the target resource.</p>
 <p>The format problem might be due to the request&#39;s indicated Content-Type or Content-Encoding, or as a result of inspecting the data directly.</p>

@@ -1,4 +1,3 @@
-      <h2>2&times;&times; Success</h2>
       <h1><span>208</span> Already Reported</h1><p>Used inside a DAV: propstat response element to avoid enumerating the internal members of multiple bindings to the same collection repeatedly.</p>
 <p>For each binding to a collection inside the request&#39;s scope, only one will be reported with a 200 status, while subsequent DAV:response elements for all other bindings will use the 208 status, and no DAV:response elements for their descendants are included.</p>
 <p>Note that the 208 status will only occur for &quot;Depth: infinity&quot; requests, and that it is of particular importance when the multiple collection bindings cause a bind loop<sup><a href="#ref-1">1</a></sup>.</p>

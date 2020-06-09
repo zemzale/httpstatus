@@ -1,4 +1,3 @@
-      <h2>4&times;&times; Client Error</h2>
       <h1><span>428</span> Precondition Required</h1><p>The origin server requires the request to be conditional.</p>
 <p>Its typical use is to avoid the &quot;lost update&quot; problem, where a client GETs a resource&#39;s state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict. By requiring requests to be conditional, the server can assure that clients are working with the correct copies.</p>
 <p>Responses using this status code SHOULD explain how to resubmit the request successfully. For example:</p>

@@ -1,4 +1,3 @@
-      <h2>3&times;&times; Redirection</h2>
       <h1><span>304</span> Not Modified</h1><p>A conditional GET or HEAD request has been received and would have resulted in a <a href="/200">200 OK</a> response if it were not for the fact that the condition evaluated to false.</p>
 <p>In other words, there is no need for the server to transfer a representation of the target resource because the request indicates that the client, which made the request conditional, already has a valid representation; the server is therefore redirecting the client to make use of that stored representation as if it were the payload of a <a href="/200">200 OK</a> response.</p>
 <p>The server generating a 304 response MUST generate any of the following header fields that would have been sent in a <a href="/200">200 OK</a> response to the same request: Cache-Control, Content-Location, Date, ETag, Expires, and Vary.</p>

@@ -1,2 +1,1 @@
-      <h2>4&times;&times; Client Error</h2>
       <h1><span>499</span> Client Closed Request</h1><p>A non-standard status code introduced by <a href="https://nginx.org">nginx</a> for the case when a client closes the connection while nginx is processing the request.</p>

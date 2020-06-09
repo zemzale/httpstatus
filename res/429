@@ -1,4 +1,3 @@
-      <h2>4&times;&times; Client Error</h2>
       <h1><span>429</span> Too Many Requests</h1><p>The user has sent too many requests in a given amount of time (&quot;rate limiting&quot;).</p>
 <p>The response representations SHOULD include details explaining the condition, and MAY include a Retry-After header indicating how long to wait before making a new request.</p>
 <p>For example:</p>

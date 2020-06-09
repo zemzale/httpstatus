@@ -1,2 +1,1 @@
-      <h2>4&times;&times; Client Error</h2>
       <h1><span>417</span> Expectation Failed</h1><p>The expectation given in the request&#39;s Expect header field<sup><a href="#ref-1">1</a></sup> could not be met by at least one of the inbound servers.</p>

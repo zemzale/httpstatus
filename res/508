@@ -1,2 +1,1 @@
-      <h2>5&times;&times; Server Error</h2>
       <h1><span>508</span> Loop Detected</h1><p>The server terminated an operation because it encountered an infinite loop while processing a request with &quot;Depth: infinity&quot;. This status indicates that the entire operation failed.</p>

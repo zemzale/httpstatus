@@ -1,4 +1,3 @@
-      <h2>3&times;&times; Redirection</h2>
       <h1><span>307</span> Temporary Redirect</h1><p>The target resource resides temporarily under a different URI and the user agent MUST NOT change the request method if it performs an automatic redirection to that URI.</p>
 <p>Since the redirection can change over time, the client ought to continue using the original effective request URI for future requests.</p>
 <p>The server SHOULD generate a Location header field in the response containing a URI reference for the different URI. The user agent MAY use the Location field value for automatic redirection. The server&#39;s response payload usually contains a short hypertext note with a hyperlink to the different URI(s).</p>

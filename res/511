@@ -1,4 +1,3 @@
-      <h2>5&times;&times; Server Error</h2>
       <h1><span>511</span> Network Authentication Required</h1><p>The client needs to authenticate to gain network access.</p>
 <p>The response representation SHOULD contain a link to a resource that allows the user to submit credentials (e.g., with an HTML form).</p>
 <p>Note that the 511 response SHOULD NOT contain a challenge or the login interface itself, because browsers would show the login interface as being associated with the originally requested URL, which may cause confusion.</p>

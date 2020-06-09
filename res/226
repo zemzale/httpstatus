@@ -1,4 +1,3 @@
-      <h2>2&times;&times; Success</h2>
       <h1><span>226</span> IM Used</h1><p>The server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.</p>
 <p>The actual current instance might not be available except by combining this response with other previous or future responses, as appropriate for the specific instance-manipulation(s). If so, the headers of the resulting instance are the result of combining the headers from the 226 response and the other instances, following the rules in <a href="https://tools.ietf.org/html/rfc2616#section-13.5.3">section 13.5.3</a> of the HTTP/1.1 specification.</p>
 <p>The request MUST have included an A-IM header field listing at least one instance-manipulation. The response MUST include an Etag header field giving the entity tag of the current instance.</p>

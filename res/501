@@ -1,4 +1,3 @@
-      <h2>5&times;&times; Server Error</h2>
       <h1><span>501</span> Not Implemented</h1><p>The server does not support the functionality required to fulfill the request.</p>
 <p>This is the appropriate response when the server does not recognize the request method and is not capable of supporting it for any resource.</p>
 <p>A 501 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls<sup><a href="#ref-1">1</a></sup>.</p>

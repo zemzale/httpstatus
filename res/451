@@ -1,4 +1,3 @@
-      <h2>4&times;&times; Client Error</h2>
       <h1><span>451</span> Unavailable For Legal Reasons</h1><p>The server is denying access to the resource as a consequence of a legal demand.</p>
 <p>The server in question might not be an origin server. This type of legal demand typically most directly affects the operations of ISPs and search engines.</p>
 <p>Responses using this status code SHOULD include an explanation, in the response body, of the details of the legal demand: the party making it, the applicable legislation or regulation, and what classes of person and resource it applies to. For example:</p>

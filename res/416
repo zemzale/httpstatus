@@ -1,4 +1,3 @@
-      <h2>4&times;&times; Client Error</h2>
       <h1><span>416</span> Requested Range Not Satisfiable</h1><p>None of the ranges in the request&#39;s Range header field<sup><a href="#ref-1">1</a></sup> overlap the current extent of the selected resource or that the set of ranges requested has been rejected due to invalid ranges or an excessive request of small or overlapping ranges.</p>
 <p>For byte ranges, failing to overlap the current extent means that the first-byte-pos of all of the byte-range-spec values were greater than the current length of the selected representation. When this status code is generated in response to a byte-range request, the sender SHOULD generate a Content-Range header field specifying the current length of the selected representation<sup><a href="#ref-2">2</a></sup>.</p>
 <p>For example:</p>

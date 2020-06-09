@@ -1,4 +1,3 @@
-      <h2>2&times;&times; Success</h2>
       <h1><span>200</span> OK</h1><p>The request has succeeded.</p>
 <p>The payload sent in a 200 response depends on the request method. For the methods defined by this specification, the intended meaning of the payload can be summarized as:</p>
 <ul>

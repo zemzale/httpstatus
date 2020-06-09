@@ -1,3 +1,2 @@
-      <h2>4&times;&times; Client Error</h2>
       <h1><span>444</span> Connection Closed Without Response</h1><p>A non-standard status code used to instruct <a href="https://nginx.org">nginx</a> to close the connection without sending a response to the client, most commonly used to deny malicious or malformed requests.</p>
 <p>This status code is not seen by the client, it only appears in nginx log files.</p>
