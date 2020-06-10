@@ -66,24 +66,19 @@ The 201 response payload typically describes and links to the resource(s) create
 	{
 		Code: 202,
 		Name: "Accepted",
-		Description: `
-
-The request has been accepted for processing, but the processing has not been
-completed. The request might or might not eventually be acted upon, as it might
-be disallowed when processing actually takes place.
+		Description: `The request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place.
 
 There is no facility in HTTP for re-sending a status code from an asynchronous
 operation.
 
-The 202 response is intentionally noncommittal. Its purpose is to allow a server to accept a request for some other process (perhaps a batch-oriented process that is only run once per day) without requiring that the user agent&#39;s connection to the server persist until the process is completed. The representation sent with this response ought to describe the request&#39;s current status and point to (or embed) a status monitor that can provide the user with an estimate of when the request will be fulfilled.
-`,
+The 202 response is intentionally noncommittal. Its purpose is to allow a server to accept a request for some other process (perhaps a batch-oriented process that is only run once per day) without requiring that the user agent's connection to the server persist until the process is completed. The representation sent with this response ought to describe the request's current status and point to (or embed) a status monitor that can provide the user with an estimate of when the request will be fulfilled.`,
 	},
 	{
 		Code: 203,
 		Name: "Non-authoritative Information",
 		Description: `
 
-The request was successful but the enclosed payload has been modified from that of the origin server&#39;s <a href="/200">200 OK</a> response by a transforming proxy<sup><a href="#ref-1">1</a></sup>.
+The request was successful but the enclosed payload has been modified from that of the origin server's <a href="/200">200 OK</a> response by a transforming proxy<sup><a href="#ref-1">1</a></sup>.
 
 This status code allows the proxy to notify recipients when a transformation has been applied, since that knowledge might impact later decisions regarding the content. For example, future cache validation requests for the content might only be applicable along the same request path (through the same proxies).
 
@@ -129,7 +124,7 @@ Since the 205 status code implies that no additional content will be provided, a
 		Name: "Partial Content",
 		Description: `
 
-The server is successfully fulfilling a range request for the target resource by transferring one or more parts of the selected representation that correspond to the satisfiable ranges found in the request&#39;s Range header field<sup><a href="#ref-1">1</a></sup>.
+The server is successfully fulfilling a range request for the target resource by transferring one or more parts of the selected representation that correspond to the satisfiable ranges found in the request's Range header field<sup><a href="#ref-1">1</a></sup>.
 
 If a single part is being transferred, the server generating the 206 response MUST generate a Content-Range header field, describing what range of the selected representation is enclosed, and a payload consisting of the range. For example:
 <pre><code>HTTP/1.1 206 Partial Content
@@ -162,7 +157,7 @@ Content-Range: bytes 7000-7999/8000
 ...the second range
 --THIS_STRING_SEPARATES--
 </code></pre>
-When multiple ranges are requested, a server MAY coalesce any of the ranges that overlap, or that are separated by a gap that is smaller than the overhead of sending multiple parts, regardless of the order in which the corresponding byte-range-spec appeared in the received Range header field. Since the typical overhead between parts of a multipart/byteranges payload is around 80 bytes, depending on the selected representation&#39;s media type and the chosen boundary parameter length, it can be less efficient to transfer many small disjoint parts than it is to transfer the entire selected representation.
+When multiple ranges are requested, a server MAY coalesce any of the ranges that overlap, or that are separated by a gap that is smaller than the overhead of sending multiple parts, regardless of the order in which the corresponding byte-range-spec appeared in the received Range header field. Since the typical overhead between parts of a multipart/byteranges payload is around 80 bytes, depending on the selected representation's media type and the chosen boundary parameter length, it can be less efficient to transfer many small disjoint parts than it is to transfer the entire selected representation.
 
 A server MUST NOT generate a multipart response to a request for a single range, since a client that does not request multiple parts might not support multipart responses. However, a server MAY generate a multipart/byteranges payload with only a single body part if multiple ranges were requested and only one range was found to be satisfiable or only one range remained after coalescing. A client that cannot process a multipart/byteranges response MUST NOT generate a request that asks for multiple ranges.
 
@@ -182,17 +177,17 @@ A 206 response is cacheable by default; i.e., unless otherwise indicated by expl
 
 A Multi-Status response conveys information about multiple resources in situations where multiple status codes might be appropriate.
 
-The default Multi-Status response body is a text/xml or application/xml HTTP entity with a &#39;multistatus&#39; root element. Further elements contain 200, 300, 400, and 500 series status codes generated during the method invocation. 100 series status codes SHOULD NOT be recorded in a &#39;response&#39; XML element.
+The default Multi-Status response body is a text/xml or application/xml HTTP entity with a 'multistatus' root element. Further elements contain 200, 300, 400, and 500 series status codes generated during the method invocation. 100 series status codes SHOULD NOT be recorded in a 'response' XML element.
 
-Although &#39;207&#39; is used as the overall response status code, the recipient needs to consult the contents of the multistatus response body for further information about the success or failure of the method execution. The response MAY be used in success, partial success and also in failure situations.
+Although '207' is used as the overall response status code, the recipient needs to consult the contents of the multistatus response body for further information about the success or failure of the method execution. The response MAY be used in success, partial success and also in failure situations.
 
-The &#39;multistatus&#39; root element holds zero or more &#39;response&#39; elements in any order, each with information about an individual resource. Each &#39;response&#39; element MUST have an &#39;href&#39; element to identify the resource.
+The 'multistatus' root element holds zero or more 'response' elements in any order, each with information about an individual resource. Each 'response' element MUST have an 'href' element to identify the resource.
 
 A Multi-Status response uses one out of two distinct formats for representing the status:
 
-1. A &#39;status&#39; element as child of the &#39;response&#39; element indicates the status of the message execution for the identified resource as a whole<sup><a href="#ref-1">1</a></sup>. Some method definitions provide information about specific status codes clients should be prepared to see in a response. However, clients MUST be able to handle other status codes, using the generic rules defined in <a href="https://tools.ietf.org/html/rfc2616#section-10">RFC2616 Section 10</a>.
+1. A 'status' element as child of the 'response' element indicates the status of the message execution for the identified resource as a whole<sup><a href="#ref-1">1</a></sup>. Some method definitions provide information about specific status codes clients should be prepared to see in a response. However, clients MUST be able to handle other status codes, using the generic rules defined in <a href="https://tools.ietf.org/html/rfc2616#section-10">RFC2616 Section 10</a>.
 
-2. For PROPFIND and PROPPATCH, the format has been extended using the &#39;propstat&#39; element instead of &#39;status&#39;, providing information about individual properties of a resource.  This format is specific to PROPFIND and PROPPATCH, and is described in detail in <a href="https://tools.ietf.org/html/rfc4918#section-9.1">RFC4918 Section 9.1</a> and <a href="https://tools.ietf.org/html/rfc4918#section-9.2">RFC4918 Section 9.2</a>.
+2. For PROPFIND and PROPPATCH, the format has been extended using the 'propstat' element instead of 'status', providing information about individual properties of a resource.  This format is specific to PROPFIND and PROPPATCH, and is described in detail in <a href="https://tools.ietf.org/html/rfc4918#section-9.1">RFC4918 Section 9.1</a> and <a href="https://tools.ietf.org/html/rfc4918#section-9.2">RFC4918 Section 9.2</a>.
 `,
 	},
 	{
@@ -202,7 +197,7 @@ A Multi-Status response uses one out of two distinct formats for representing th
 
 Used inside a DAV: propstat response element to avoid enumerating the internal members of multiple bindings to the same collection repeatedly.
 
-For each binding to a collection inside the request&#39;s scope, only one will be reported with a 200 status, while subsequent DAV:response elements for all other bindings will use the 208 status, and no DAV:response elements for their descendants are included.
+For each binding to a collection inside the request's scope, only one will be reported with a 200 status, while subsequent DAV:response elements for all other bindings will use the 208 status, and no DAV:response elements for their descendants are included.
 
 Note that the 208 status will only occur for &quot;Depth: infinity&quot; requests, and that it is of particular importance when the multiple collection bindings cause a bind loop<sup><a href="#ref-1">1</a></sup>.
 
@@ -236,7 +231,7 @@ The target resource has more than one representation, each with its own more spe
 
 In other words, the server desires that the user agent engage in reactive negotiation to select the most appropriate representation(s) for its needs<sup><a href="#ref-1">1</a></sup>.
 
-If the server has a preferred choice, the server SHOULD generate a Location header field containing a preferred choice&#39;s URI reference. The user agent MAY use the Location field value for automatic redirection.
+If the server has a preferred choice, the server SHOULD generate a Location header field containing a preferred choice's URI reference. The user agent MAY use the Location field value for automatic redirection.
 
 For request methods other than HEAD, the server SHOULD generate a payload in the 300 response containing a list of representation metadata and URI reference(s) from which the user or user agent can choose the one most preferred. The user agent MAY make a selection from that list automatically if it understands the provided media type. A specific format for automatic selection is not defined by this specification because HTTP tries to remain orthogonal to the definition of its payloads. In practice, the representation is provided in some easily parsed format believed to be acceptable to the user agent, as determined by shared design or content negotiation, or in some commonly accepted hypertext format.
 
@@ -254,7 +249,7 @@ The target resource has been assigned a new permanent URI and any future referen
 
 Clients with link-editing capabilities ought to automatically re-link references to the effective request URI to one or more of the new references sent by the server, where possible.
 
-The server SHOULD generate a Location header field in the response containing a preferred URI reference for the new permanent URI. The user agent MAY use the Location field value for automatic redirection. The server&#39;s response payload usually contains a short hypertext note with a hyperlink to the new URI(s).
+The server SHOULD generate a Location header field in the response containing a preferred URI reference for the new permanent URI. The user agent MAY use the Location field value for automatic redirection. The server's response payload usually contains a short hypertext note with a hyperlink to the new URI(s).
 
 Note: For historical reasons, a user agent MAY change the request method from POST to GET for the subsequent request. If this behavior is undesired, the <a href="/307">307 Temporary Redirect</a> status code can be used instead.
 
@@ -268,7 +263,7 @@ A 301 response is cacheable by default; i.e., unless otherwise indicated by the 
 
 The target resource resides temporarily under a different URI. Since the redirection might be altered on occasion, the client ought to continue to use the effective request URI for future requests.
 
-The server SHOULD generate a Location header field in the response containing a URI reference for the different URI. The user agent MAY use the Location field value for automatic redirection. The server&#39;s response payload usually contains a short hypertext note with a hyperlink to the different URI(s).
+The server SHOULD generate a Location header field in the response containing a URI reference for the different URI. The user agent MAY use the Location field value for automatic redirection. The server's response payload usually contains a short hypertext note with a hyperlink to the different URI(s).
 
 Note: For historical reasons, a user agent MAY change the request method from POST to GET for the subsequent request. If this behavior is undesired, the <a href="/307">307 Temporary Redirect</a> status code can be used instead.
 `,
@@ -324,7 +319,7 @@ The target resource resides temporarily under a different URI and the user agent
 
 Since the redirection can change over time, the client ought to continue using the original effective request URI for future requests.
 
-The server SHOULD generate a Location header field in the response containing a URI reference for the different URI. The user agent MAY use the Location field value for automatic redirection. The server&#39;s response payload usually contains a short hypertext note with a hyperlink to the different URI(s).
+The server SHOULD generate a Location header field in the response containing a URI reference for the different URI. The user agent MAY use the Location field value for automatic redirection. The server's response payload usually contains a short hypertext note with a hyperlink to the different URI(s).
 
 Note: This status code is similar to 302 Found, except that it does not allow changing the request method from POST to GET. This specification defines no equivalent counterpart for <a href="/301">301 Moved Permanently</a> (<a href="https://tools.ietf.org/html/rfc7238">RFC7238</a>, however, proposes defining the status code <a href="/308">308 Permanent Redirect</a> for this purpose).
 `,
@@ -338,7 +333,7 @@ The target resource has been assigned a new permanent URI and any future referen
 
 Clients with link editing capabilities ought to automatically re-link references to the effective request URI<sup><a href="#ref-1">1</a></sup> to one or more of the new references sent by the server, where possible.
 
-The server SHOULD generate a Location header field<sup><a href="#ref-2">2</a></sup> in the response containing a preferred URI reference for the new permanent URI. The user agent MAY use the Location field value for automatic redirection. The server&#39;s response payload usually contains a short hypertext note with a hyperlink to the new URI(s).
+The server SHOULD generate a Location header field<sup><a href="#ref-2">2</a></sup> in the response containing a preferred URI reference for the new permanent URI. The user agent MAY use the Location field value for automatic redirection. The server's response payload usually contains a short hypertext note with a hyperlink to the new URI(s).
 
 A 308 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls<sup><a href="#ref-3">3</a></sup>.
 
@@ -406,7 +401,7 @@ A 404 response is cacheable by default; i.e., unless otherwise indicated by the 
 
 The method received in the request-line is known by the origin server but not supported by the target resource.
 
-The origin server MUST generate an Allow header field in a 405 response containing a list of the target resource&#39;s currently supported methods.
+The origin server MUST generate an Allow header field in a 405 response containing a list of the target resource's currently supported methods.
 
 A 405 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls<sup><a href="#ref-1">1</a></sup>.
 `,
@@ -450,7 +445,7 @@ The request could not be completed due to a conflict with the current state of t
 
 The server SHOULD generate a payload that includes enough information for a user to recognize the source of the conflict.
 
-Conflicts are most likely to occur in response to a PUT request. For example, if versioning were being used and the representation being PUT included changes to a resource that conflict with those made by an earlier (third-party) request, the origin server might use a 409 response to indicate that it can&#39;t complete the request. In this case, the response representation would likely contain information useful for merging the differences based on the revision history.
+Conflicts are most likely to occur in response to a PUT request. For example, if versioning were being used and the representation being PUT included changes to a resource that conflict with those made by an earlier (third-party) request, the origin server might use a 409 response to indicate that it can't complete the request. In this case, the response representation would likely contain information useful for merging the differences based on the revision history.
 `,
 	},
 	{
@@ -462,7 +457,7 @@ The target resource is no longer available at the origin server and that this co
 
 If the origin server does not know, or has no facility to determine, whether or not the condition is permanent, the status code <a href="/404">404 Not Found</a> ought to be used instead.
 
-The 410 response is primarily intended to assist the task of web maintenance by notifying the recipient that the resource is intentionally unavailable and that the server owners desire that remote links to that resource be removed. Such an event is common for limited-time, promotional services and for resources belonging to individuals no longer associated with the origin server&#39;s site. It is not necessary to mark all permanently unavailable resources as &quot;gone&quot; or to keep the mark for any length of time -- that is left to the discretion of the server owner.
+The 410 response is primarily intended to assist the task of web maintenance by notifying the recipient that the resource is intentionally unavailable and that the server owners desire that remote links to that resource be removed. Such an event is common for limited-time, promotional services and for resources belonging to individuals no longer associated with the origin server's site. It is not necessary to mark all permanently unavailable resources as &quot;gone&quot; or to keep the mark for any length of time -- that is left to the discretion of the server owner.
 
 A 410 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls<sup><a href="#ref-1">1</a></sup>.
 `,
@@ -518,7 +513,7 @@ A 414 response is cacheable by default; i.e., unless otherwise indicated by the 
 
 The origin server is refusing to service the request because the payload is in a format not supported by this method on the target resource.
 
-The format problem might be due to the request&#39;s indicated Content-Type or Content-Encoding, or as a result of inspecting the data directly.
+The format problem might be due to the request's indicated Content-Type or Content-Encoding, or as a result of inspecting the data directly.
 `,
 	},
 	{
@@ -526,7 +521,7 @@ The format problem might be due to the request&#39;s indicated Content-Type or C
 		Name: "Requested Range Not Satisfiable",
 		Description: `
 
-None of the ranges in the request&#39;s Range header field<sup><a href="#ref-1">1</a></sup> overlap the current extent of the selected resource or that the set of ranges requested has been rejected due to invalid ranges or an excessive request of small or overlapping ranges.
+None of the ranges in the request's Range header field<sup><a href="#ref-1">1</a></sup> overlap the current extent of the selected resource or that the set of ranges requested has been rejected due to invalid ranges or an excessive request of small or overlapping ranges.
 
 For byte ranges, failing to overlap the current extent means that the first-byte-pos of all of the byte-range-spec values were greater than the current length of the selected representation. When this status code is generated in response to a byte-range request, the sender SHOULD generate a Content-Range header field specifying the current length of the selected representation<sup><a href="#ref-2">2</a></sup>.
 
@@ -543,7 +538,7 @@ Note: Because servers are free to ignore Range, many implementations will simply
 		Name: "Expectation Failed",
 		Description: `
 
-The expectation given in the request&#39;s Expect header field<sup><a href="#ref-1">1</a></sup> could not be met by at least one of the inbound servers.
+The expectation given in the request's Expect header field<sup><a href="#ref-1">1</a></sup> could not be met by at least one of the inbound servers.
 `,
 	},
 	{
@@ -551,7 +546,7 @@ The expectation given in the request&#39;s Expect header field<sup><a href="#ref
 		Name: "> I'm a teapot",
 		Description: `
 
-Any attempt to brew coffee with a teapot should result in the error code &quot;418 I&#39;m a teapot&quot;. The resulting entity body MAY be short and stout.
+Any attempt to brew coffee with a teapot should result in the error code &quot;418 I'm a teapot&quot;. The resulting entity body MAY be short and stout.
 `,
 	},
 	{
@@ -585,7 +580,7 @@ For example, this error condition may occur if an XML request body contains well
 
 The source or destination resource of a method is locked.
 
-This response SHOULD contain an appropriate precondition or postcondition code, such as &#39;lock-token-submitted&#39; or &#39;no-conflicting-lock&#39;.
+This response SHOULD contain an appropriate precondition or postcondition code, such as 'lock-token-submitted' or 'no-conflicting-lock'.
 `,
 	},
 	{
@@ -624,7 +619,7 @@ This service requires use of the HTTP/3.0 protocol.
 
 The origin server requires the request to be conditional.
 
-Its typical use is to avoid the &quot;lost update&quot; problem, where a client GETs a resource&#39;s state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict. By requiring requests to be conditional, the server can assure that clients are working with the correct copies.
+Its typical use is to avoid the &quot;lost update&quot; problem, where a client GETs a resource's state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict. By requiring requests to be conditional, the server can assure that clients are working with the correct copies.
 
 Responses using this status code SHOULD explain how to resubmit the request successfully. For example:
 <pre><code>HTTP/1.1 428 Precondition Required
@@ -732,7 +727,7 @@ Content-Type: text/html
     &lt;p&gt;This request may not be serviced in the Roman Province
     of Judea due to the Lex Julia Majestatis, which disallows
     access to resources hosted on servers deemed to be
-    operated by the People&#39;s Front of Judea.&lt;/p&gt;
+    operated by the People's Front of Judea.&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
