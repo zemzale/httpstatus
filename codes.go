@@ -618,15 +618,15 @@ Responses using this status code SHOULD explain how to resubmit the request succ
 <pre><code>HTTP/1.1 428 Precondition Required
 Content-Type: text/html
 
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Precondition Required&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Precondition Required&lt;/h1&gt;
-    &lt;p&gt;This request is required to be conditional; try using "If-Match".&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+<html>
+  <head>
+    <title>Precondition Required</title>
+  </head>
+  <body>
+    <h1>Precondition Required</h1>
+    <p>This request is required to be conditional; try using "If-Match".</p>
+  </body>
+</html>
 </code></pre>
 Responses with the 428 status code MUST NOT be stored by a cache.
 `,
@@ -645,16 +645,16 @@ For example:
 Content-Type: text/html
 Retry-After: 3600
 
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Too Many Requests&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Too Many Requests&lt;/h1&gt;
-    &lt;p&gt;I only allow 50 requests per hour to this Web site per
-    logged in user. Try again soon.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+<html>
+  <head>
+    <title>Too Many Requests</title>
+  </head>
+  <body>
+    <h1>Too Many Requests</h1>
+    <p>I only allow 50 requests per hour to this Web site per
+    logged in user. Try again soon.</p>
+  </body>
+</html>
 </code></pre>
 Note that this specification does not define how the origin server identifies the user, nor how it counts requests. For example, an origin server that is limiting request rates can do so based upon counts of requests on a per-resource basis, across the entire server, or even among a set of servers. Likewise, it might identify the user by its authentication credentials, or a stateful cookie.
 
@@ -674,15 +674,15 @@ For example:
 <pre><code>HTTP/1.1 431 Request Header Fields Too Large
 Content-Type: text/html
 
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Request Header Fields Too Large&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Request Header Fields Too Large&lt;/h1&gt;
-    &lt;p&gt;The "Example" header was too large.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+<html>
+  <head>
+    <title>Request Header Fields Too Large</title>
+  </head>
+  <body>
+    <h1>Request Header Fields Too Large</h1>
+    <p>The "Example" header was too large.</p>
+  </body>
+</html>
 </code></pre>
 Responses with the 431 status code MUST NOT be stored by a cache.
 `,
@@ -708,21 +708,21 @@ The server in question might not be an origin server. This type of legal demand 
 
 Responses using this status code SHOULD include an explanation, in the response body, of the details of the legal demand: the party making it, the applicable legislation or regulation, and what classes of person and resource it applies to. For example:
 <pre><code>HTTP/1.1 451 Unavailable For Legal Reasons
-Link: &lt;https://spqr.example.org/legislatione&gt;; rel="blocked-by"
+Link: <https://spqr.example.org/legislatione>; rel="blocked-by"
 Content-Type: text/html
 
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Unavailable For Legal Reasons&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Unavailable For Legal Reasons&lt;/h1&gt;
-    &lt;p&gt;This request may not be serviced in the Roman Province
+<html>
+  <head>
+    <title>Unavailable For Legal Reasons</title>
+  </head>
+  <body>
+    <h1>Unavailable For Legal Reasons</h1>
+    <p>This request may not be serviced in the Roman Province
     of Judea due to the Lex Julia Majestatis, which disallows
     access to resources hosted on servers deemed to be
-    operated by the People's Front of Judea.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+    operated by the People's Front of Judea.</p>
+  </body>
+</html>
 </code></pre>
 The use of the 451 status code implies neither the existence nor non- existence of the resource named in the request. That is to say, it is possible that if the legal demands were removed, a request for the resource still might not succeed.
 
@@ -864,17 +864,17 @@ Upon receiving such a request, the login server would generate a 511 response:
 <pre><code>HTTP/1.1 511 Network Authentication Required
 Content-Type: text/html
 
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Network Authentication Required&lt;/title&gt;
-    &lt;meta http-equiv="refresh" content="0; url=https://login.example.net/"&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;p&gt;You need to &lt;a href="https://login.example.net/"&gt;
-    authenticate with the local network&lt;/a&gt; in order to gain
-    access.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+<html>
+  <head>
+    <title>Network Authentication Required</title>
+    <meta http-equiv="refresh" content="0; url=https://login.example.net/">
+  </head>
+  <body>
+    <p>You need to <a href="https://login.example.net/">
+    authenticate with the local network</a> in order to gain
+    access.</p>
+  </body>
+</html>
 </code></pre>
 Here, the 511 status code assures that non-browser clients will not interpret the response as being from the origin server, and the META HTML element redirects the user agent to the login server.
 `,
