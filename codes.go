@@ -57,14 +57,11 @@ A 200 response is cacheable by default; i.e., unless otherwise indicated by the 
 	{
 		Code: 201,
 		Name: "Created",
-		Description: `
-
-The request has been fulfilled and has resulted in one or more new resources being created.
+		Description: `The request has been fulfilled and has resulted in one or more new resources being created.
 
 The primary resource created by the request is identified by either a Location header field in the response or, if no Location field is received, by the effective request URI.
 
-The 201 response payload typically describes and links to the resource(s) created. See <a href="https://tools.ietf.org/html/rfc7231#section-7.2">Section 7.2 of RFC7231</a> for a discussion of the meaning and purpose of validator header fields, such as ETag and Last-Modified, in a 201 response.
-`,
+The 201 response payload typically describes and links to the resource(s) created. See Section 7.2 of RFC7231 for a discussion of the meaning and purpose of validator header fields, such as ETag and Last-Modified, in a 201 response.`,
 	},
 	{
 		Code: 202,
