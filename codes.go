@@ -28,9 +28,7 @@ It is assumed that the server will only agree to switch protocols when it is adv
 	{
 		Code: 102,
 		Name: "Processing",
-		Description: `
-
-An interim response used to inform the client that the server has accepted the complete request, but has not yet completed it.
+		Description: `An interim response used to inform the client that the server has accepted the complete request, but has not yet completed it.
 
 This status code SHOULD only be sent when the server has a reasonable expectation that the request will take significant time to complete. As guidance, if a method is taking longer than 20 seconds (a reasonable, but arbitrary value) to process the server SHOULD return a 102 (Processing) response. The server MUST send a final response after the request has been completed.
 
@@ -103,9 +101,7 @@ A 204 response is cacheable by default; i.e., unless otherwise indicated by the 
 	{
 		Code: 205,
 		Name: "Reset Content",
-		Description: `
-
-The server has fulfilled the request and desires that the user agent reset the "document view", which caused the request to be sent, to its original state as received from the origin server.
+		Description: `The server has fulfilled the request and desires that the user agent reset the "document view", which caused the request to be sent, to its original state as received from the origin server.
 
 This response is intended to support a common data entry use case where the user receives content that supports data entry (a form, notepad, canvas, etc.), enters or manipulates data in that space, causes the entered data to be submitted in a request, and then the data entry mechanism is reset for the next entry so that the user can easily initiate another input action.
 
@@ -115,9 +111,7 @@ Since the 205 status code implies that no additional content will be provided, a
 	{
 		Code: 206,
 		Name: "Partial Content",
-		Description: `
-
-The server is successfully fulfilling a range request for the target resource by transferring one or more parts of the selected representation that correspond to the satisfiable ranges found in the request's Range header field.
+		Description: `The server is successfully fulfilling a range request for the target resource by transferring one or more parts of the selected representation that correspond to the satisfiable ranges found in the request's Range header field.
 
 If a single part is being transferred, the server generating the 206 response MUST generate a Content-Range header field, describing what range of the selected representation is enclosed, and a payload consisting of the range. For example:
 <pre><code>HTTP/1.1 206 Partial Content
@@ -166,9 +160,7 @@ A 206 response is cacheable by default; i.e., unless otherwise indicated by expl
 	{
 		Code: 207,
 		Name: "Multi-Status",
-		Description: `
-
-A Multi-Status response conveys information about multiple resources in situations where multiple status codes might be appropriate.
+		Description: `A Multi-Status response conveys information about multiple resources in situations where multiple status codes might be appropriate.
 
 The default Multi-Status response body is a text/xml or application/xml HTTP entity with a 'multistatus' root element. Further elements contain 200, 300, 400, and 500 series status codes generated during the method invocation. 100 series status codes SHOULD NOT be recorded in a 'response' XML element.
 
@@ -186,9 +178,7 @@ A Multi-Status response uses one out of two distinct formats for representing th
 	{
 		Code: 208,
 		Name: "Already Reported",
-		Description: `
-
-Used inside a DAV: propstat response element to avoid enumerating the internal members of multiple bindings to the same collection repeatedly.
+		Description: `Used inside a DAV: propstat response element to avoid enumerating the internal members of multiple bindings to the same collection repeatedly.
 
 For each binding to a collection inside the request's scope, only one will be reported with a 200 status, while subsequent DAV:response elements for all other bindings will use the 208 status, and no DAV:response elements for their descendants are included.
 
@@ -202,9 +192,7 @@ For backward compatibility with clients not aware of the 208 status code appeari
 	{
 		Code: 226,
 		Name: "IM Used",
-		Description: `
-
-The server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.
+		Description: `The server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.
 
 The actual current instance might not be available except by combining this response with other previous or future responses, as appropriate for the specific instance-manipulation(s). If so, the headers of the resulting instance are the result of combining the headers from the 226 response and the other instances, following the rules in <a href="https://tools.ietf.org/html/rfc2616#section-13.5.3">section 13.5.3</a> of the HTTP/1.1 specification.
 
@@ -218,9 +206,7 @@ A response received with a status code of 226 MAY be used by a cache, in conjunc
 	{
 		Code: 300,
 		Name: "Multiple Choices",
-		Description: `
-
-The target resource has more than one representation, each with its own more specific identifier, and information about the alternatives is being provided so that the user (or user agent) can select a preferred representation by redirecting its request to one or more of those identifiers.
+		Description: `The target resource has more than one representation, each with its own more specific identifier, and information about the alternatives is being provided so that the user (or user agent) can select a preferred representation by redirecting its request to one or more of those identifiers.
 
 In other words, the server desires that the user agent engage in reactive negotiation to select the most appropriate representation(s) for its needs.
 
@@ -236,9 +222,7 @@ Note: The original proposal for the 300 status code defined the URI header field
 	{
 		Code: 301,
 		Name: "Moved Permanently",
-		Description: `
-
-The target resource has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs.
+		Description: `The target resource has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs.
 
 Clients with link-editing capabilities ought to automatically re-link references to the effective request URI to one or more of the new references sent by the server, where possible.
 
@@ -252,9 +236,7 @@ A 301 response is cacheable by default; i.e., unless otherwise indicated by the 
 	{
 		Code: 302,
 		Name: "Found",
-		Description: `
-
-The target resource resides temporarily under a different URI. Since the redirection might be altered on occasion, the client ought to continue to use the effective request URI for future requests.
+		Description: `The target resource resides temporarily under a different URI. Since the redirection might be altered on occasion, the client ought to continue to use the effective request URI for future requests.
 
 The server SHOULD generate a Location header field in the response containing a URI reference for the different URI. The user agent MAY use the Location field value for automatic redirection. The server's response payload usually contains a short hypertext note with a hyperlink to the different URI(s).
 
@@ -264,9 +246,7 @@ Note: For historical reasons, a user agent MAY change the request method from PO
 	{
 		Code: 303,
 		Name: "See Other",
-		Description: `
-
-The server is redirecting the user agent to a different resource, as indicated by a URI in the Location header field, which is intended to provide an indirect response to the original request.
+		Description: `The server is redirecting the user agent to a different resource, as indicated by a URI in the Location header field, which is intended to provide an indirect response to the original request.
 
 A user agent can perform a retrieval request targeting that URI (a GET or HEAD request if using HTTP), which might also be redirected, and present the eventual result as an answer to the original request. Note that the new URI in the Location header field is not considered equivalent to the effective request URI.
 
@@ -280,9 +260,7 @@ Except for responses to a HEAD request, the representation of a 303 response oug
 	{
 		Code: 304,
 		Name: "Not Modified",
-		Description: `
-
-A conditional GET or HEAD request has been received and would have resulted in a <a href="/200">200 OK</a> response if it were not for the fact that the condition evaluated to false.
+		Description: `A conditional GET or HEAD request has been received and would have resulted in a <a href="/200">200 OK</a> response if it were not for the fact that the condition evaluated to false.
 
 In other words, there is no need for the server to transfer a representation of the target resource because the request indicates that the client, which made the request conditional, already has a valid representation; the server is therefore redirecting the client to make use of that stored representation as if it were the payload of a <a href="/200">200 OK</a> response.
 
@@ -298,17 +276,13 @@ A 304 response cannot contain a message-body; it is always terminated by the fir
 	{
 		Code: 305,
 		Name: "Use Proxy",
-		Description: `
-
-Defined in a previous version of this specification and is now deprecated, due to security concerns regarding in-band configuration of a proxy.
+		Description: `Defined in a previous version of this specification and is now deprecated, due to security concerns regarding in-band configuration of a proxy.
 `,
 	},
 	{
 		Code: 307,
 		Name: "Temporary Redirect",
-		Description: `
-
-The target resource resides temporarily under a different URI and the user agent MUST NOT change the request method if it performs an automatic redirection to that URI.
+		Description: `The target resource resides temporarily under a different URI and the user agent MUST NOT change the request method if it performs an automatic redirection to that URI.
 
 Since the redirection can change over time, the client ought to continue using the original effective request URI for future requests.
 
@@ -320,9 +294,7 @@ Note: This status code is similar to 302 Found, except that it does not allow ch
 	{
 		Code: 308,
 		Name: "Permanent Redirect",
-		Description: `
-
-The target resource has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs.
+		Description: `The target resource has been assigned a new permanent URI and any future references to this resource ought to use one of the enclosed URIs.
 
 Clients with link editing capabilities ought to automatically re-link references to the effective request URI to one or more of the new references sent by the server, where possible.
 
@@ -336,17 +308,13 @@ Note: This status code is similar to <a href="/301">301 Moved Permanently</a>, e
 	{
 		Code: 400,
 		Name: "Bad Request",
-		Description: `
-
-The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+		Description: `The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
 `,
 	},
 	{
 		Code: 401,
 		Name: "Unauthorized",
-		Description: `
-
-The request has not been applied because it lacks valid authentication credentials for the target resource.
+		Description: `The request has not been applied because it lacks valid authentication credentials for the target resource.
 
 The server generating a 401 response MUST send a WWW-Authenticate header field containing at least one challenge applicable to the target resource.
 
@@ -356,17 +324,13 @@ If the request included authentication credentials, then the 401 response indica
 	{
 		Code: 402,
 		Name: "Payment Required",
-		Description: `
-
-Reserved for future use.
+		Description: `Reserved for future use.
 `,
 	},
 	{
 		Code: 403,
 		Name: "Forbidden",
-		Description: `
-
-The server understood the request but refuses to authorize it.
+		Description: `The server understood the request but refuses to authorize it.
 
 A server that wishes to make public why the request has been forbidden can describe that reason in the response payload (if any).
 
@@ -378,9 +342,7 @@ An origin server that wishes to "hide" the current existence of a forbidden targ
 	{
 		Code: 404,
 		Name: "Not Found",
-		Description: `
-
-The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.
+		Description: `The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.
 
 A 404 status code does not indicate whether this lack of representation is temporary or permanent; the <a href="/410">410 Gone</a> status code is preferred over 404 if the origin server knows, presumably through some configurable means, that the condition is likely to be permanent.
 
@@ -390,9 +352,7 @@ A 404 response is cacheable by default; i.e., unless otherwise indicated by the 
 	{
 		Code: 405,
 		Name: "Method Not Allowed",
-		Description: `
-
-The method received in the request-line is known by the origin server but not supported by the target resource.
+		Description: `The method received in the request-line is known by the origin server but not supported by the target resource.
 
 The origin server MUST generate an Allow header field in a 405 response containing a list of the target resource's currently supported methods.
 
@@ -402,9 +362,7 @@ A 405 response is cacheable by default; i.e., unless otherwise indicated by the 
 	{
 		Code: 406,
 		Name: "Not Acceptable",
-		Description: `
-
-The target resource does not have a current representation that would be acceptable to the user agent, according to the proactive negotiation header fields received in the request, and the server is unwilling to supply a default representation.
+		Description: `The target resource does not have a current representation that would be acceptable to the user agent, according to the proactive negotiation header fields received in the request, and the server is unwilling to supply a default representation.
 
 The server SHOULD generate a payload containing a list of available representation characteristics and corresponding resource identifiers from which the user or user agent can choose the one most appropriate. A user agent MAY automatically select the most appropriate choice from that list. However, this specification does not define any standard for such automatic selection, as described in <a href="https://tools.ietf.org/html/rfc7231#section-6.4.1">RFC7231 Section 6.4.1</a>.
 `,
@@ -412,9 +370,7 @@ The server SHOULD generate a payload containing a list of available representati
 	{
 		Code: 407,
 		Name: "Proxy Authentication Required",
-		Description: `
-
-Similar to <a href="/401">401 Unauthorized</a>, but it indicates that the client needs to authenticate itself in order to use a proxy.
+		Description: `Similar to <a href="/401">401 Unauthorized</a>, but it indicates that the client needs to authenticate itself in order to use a proxy.
 
 The proxy MUST send a Proxy-Authenticate header field<sup><a href="#ref-1">1</a></sup> containing a challenge applicable to that proxy for the target resource. The client MAY repeat the request with a new or replaced Proxy-Authorization header field<sup><a href="#ref-2">2</a></sup>.
 `,
@@ -422,9 +378,7 @@ The proxy MUST send a Proxy-Authenticate header field<sup><a href="#ref-1">1</a>
 	{
 		Code: 408,
 		Name: "Request Timeout",
-		Description: `
-
-The server did not receive a complete request message within the time that it was prepared to wait.
+		Description: `The server did not receive a complete request message within the time that it was prepared to wait.
 
 A server SHOULD send the "close" connection option in the response, since 408 implies that the server has decided to close the connection rather than continue waiting. If the client has an outstanding request in transit, the client MAY repeat that request on a new connection.
 `,
@@ -432,9 +386,7 @@ A server SHOULD send the "close" connection option in the response, since 408 im
 	{
 		Code: 409,
 		Name: "Conflict",
-		Description: `
-
-The request could not be completed due to a conflict with the current state of the target resource. This code is used in situations where the user might be able to resolve the conflict and resubmit the request.
+		Description: `The request could not be completed due to a conflict with the current state of the target resource. This code is used in situations where the user might be able to resolve the conflict and resubmit the request.
 
 The server SHOULD generate a payload that includes enough information for a user to recognize the source of the conflict.
 
@@ -444,9 +396,7 @@ Conflicts are most likely to occur in response to a PUT request. For example, if
 	{
 		Code: 410,
 		Name: "Gone",
-		Description: `
-
-The target resource is no longer available at the origin server and that this condition is likely to be permanent.
+		Description: `The target resource is no longer available at the origin server and that this condition is likely to be permanent.
 
 If the origin server does not know, or has no facility to determine, whether or not the condition is permanent, the status code <a href="/404">404 Not Found</a> ought to be used instead.
 
@@ -458,9 +408,7 @@ A 410 response is cacheable by default; i.e., unless otherwise indicated by the 
 	{
 		Code: 411,
 		Name: "Length Required",
-		Description: `
-
-The server refuses to accept the request without a defined Content-Length.
+		Description: `The server refuses to accept the request without a defined Content-Length.
 
 The client MAY repeat the request if it adds a valid Content-Length header field containing the length of the message body in the request message.
 `,
@@ -468,9 +416,7 @@ The client MAY repeat the request if it adds a valid Content-Length header field
 	{
 		Code: 412,
 		Name: "Precondition Failed",
-		Description: `
-
-One or more conditions given in the request header fields evaluated to false when tested on the server.
+		Description: `One or more conditions given in the request header fields evaluated to false when tested on the server.
 
 This response code allows the client to place preconditions on the current resource state (its current representations and metadata) and, thus, prevent the request method from being applied if the target resource is in an unexpected state.
 `,
@@ -478,9 +424,7 @@ This response code allows the client to place preconditions on the current resou
 	{
 		Code: 413,
 		Name: "Payload Too Large",
-		Description: `
-
-The server is refusing to process a request because the request payload is larger than the server is willing or able to process.
+		Description: `The server is refusing to process a request because the request payload is larger than the server is willing or able to process.
 
 The server MAY close the connection to prevent the client from continuing the request.
 
@@ -490,9 +434,7 @@ If the condition is temporary, the server SHOULD generate a Retry-After header f
 	{
 		Code: 414,
 		Name: "Request-URI Too Long",
-		Description: `
-
-The server is refusing to service the request because the request-target is longer than the server is willing to interpret.
+		Description: `The server is refusing to service the request because the request-target is longer than the server is willing to interpret.
 
 This rare condition is only likely to occur when a client has improperly converted a POST request to a GET request with long query information, when the client has descended into a "black hole" of redirection (e.g., a redirected URI prefix that points to a suffix of itself) or when the server is under attack by a client attempting to exploit potential security holes.
 
@@ -502,9 +444,7 @@ A 414 response is cacheable by default; i.e., unless otherwise indicated by the 
 	{
 		Code: 415,
 		Name: "Unsupported Media Type",
-		Description: `
-
-The origin server is refusing to service the request because the payload is in a format not supported by this method on the target resource.
+		Description: `The origin server is refusing to service the request because the payload is in a format not supported by this method on the target resource.
 
 The format problem might be due to the request's indicated Content-Type or Content-Encoding, or as a result of inspecting the data directly.
 `,
@@ -512,9 +452,7 @@ The format problem might be due to the request's indicated Content-Type or Conte
 	{
 		Code: 416,
 		Name: "Requested Range Not Satisfiable",
-		Description: `
-
-None of the ranges in the request's Range header field overlap the current extent of the selected resource or that the set of ranges requested has been rejected due to invalid ranges or an excessive request of small or overlapping ranges.
+		Description: `None of the ranges in the request's Range header field overlap the current extent of the selected resource or that the set of ranges requested has been rejected due to invalid ranges or an excessive request of small or overlapping ranges.
 
 For byte ranges, failing to overlap the current extent means that the first-byte-pos of all of the byte-range-spec values were greater than the current length of the selected representation. When this status code is generated in response to a byte-range request, the sender SHOULD generate a Content-Range header field specifying the current length of the selected representation.
 
@@ -529,25 +467,19 @@ Note: Because servers are free to ignore Range, many implementations will simply
 	{
 		Code: 417,
 		Name: "Expectation Failed",
-		Description: `
-
-The expectation given in the request's Expect header field could not be met by at least one of the inbound servers.
+		Description: `The expectation given in the request's Expect header field could not be met by at least one of the inbound servers.
 `,
 	},
 	{
 		Code: 418,
 		Name: "> I'm a teapot",
-		Description: `
-
-Any attempt to brew coffee with a teapot should result in the error code "418 I'm a teapot". The resulting entity body MAY be short and stout.
+		Description: `Any attempt to brew coffee with a teapot should result in the error code "418 I'm a teapot". The resulting entity body MAY be short and stout.
 `,
 	},
 	{
 		Code: 421,
 		Name: "Misdirected Request",
-		Description: `
-
-The request was directed at a server that is not able to produce a response. This can be sent by a server that is not configured to produce responses for the combination of scheme and authority that are included in the request URI.
+		Description: `The request was directed at a server that is not able to produce a response. This can be sent by a server that is not configured to produce responses for the combination of scheme and authority that are included in the request URI.
 
 Clients receiving a 421 Misdirected Request response from a server MAY retry the request -- whether the request method is idempotent or not -- over a different connection. This is possible if a connection is reusedor if an alternative service is selected <a href="https://tools.ietf.org/html/rfc7540#ref-ALT-SVC">ALT-SVC</a>.
 
@@ -559,9 +491,7 @@ A 421 response is cacheable by default, i.e., unless otherwise indicated by the 
 	{
 		Code: 422,
 		Name: "Unprocessable Entity",
-		Description: `
-
-The server understands the content type of the request entity (hence a <a href="/415">415 Unsupported Media Type</a> status code is inappropriate), and the syntax of the request entity is correct (thus a <a href="/400">400 Bad Request</a> status code is inappropriate) but was unable to process the contained instructions.
+		Description: `The server understands the content type of the request entity (hence a <a href="/415">415 Unsupported Media Type</a> status code is inappropriate), and the syntax of the request entity is correct (thus a <a href="/400">400 Bad Request</a> status code is inappropriate) but was unable to process the contained instructions.
 
 For example, this error condition may occur if an XML request body contains well-formed (i.e., syntactically correct), but semantically erroneous, XML instructions.
 `,
@@ -569,9 +499,7 @@ For example, this error condition may occur if an XML request body contains well
 	{
 		Code: 423,
 		Name: "Locked",
-		Description: `
-
-The source or destination resource of a method is locked.
+		Description: `The source or destination resource of a method is locked.
 
 This response SHOULD contain an appropriate precondition or postcondition code, such as 'lock-token-submitted' or 'no-conflicting-lock'.
 `,
@@ -579,9 +507,7 @@ This response SHOULD contain an appropriate precondition or postcondition code, 
 	{
 		Code: 424,
 		Name: "Failed Dependency",
-		Description: `
-
-The method could not be performed on the resource because the requested action depended on another action and that action failed.
+		Description: `The method could not be performed on the resource because the requested action depended on another action and that action failed.
 
 For example, if a command in a PROPPATCH method fails, then, at minimum, the rest of the commands will also fail with 424 Failed Dependency.
 `,
@@ -589,9 +515,7 @@ For example, if a command in a PROPPATCH method fails, then, at minimum, the res
 	{
 		Code: 426,
 		Name: "Upgrade Required",
-		Description: `
-
-The server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol.
+		Description: `The server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol.
 
 The server MUST send an Upgrade header field in a 426 response to indicate the required protocol(s)
 
@@ -608,9 +532,7 @@ This service requires use of the HTTP/3.0 protocol.
 	{
 		Code: 428,
 		Name: "Precondition Required",
-		Description: `
-
-The origin server requires the request to be conditional.
+		Description: `The origin server requires the request to be conditional.
 
 Its typical use is to avoid the "lost update" problem, where a client GETs a resource's state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict. By requiring requests to be conditional, the server can assure that clients are working with the correct copies.
 
@@ -634,9 +556,7 @@ Responses with the 428 status code MUST NOT be stored by a cache.
 	{
 		Code: 429,
 		Name: "Too Many Requests",
-		Description: `
-
-The user has sent too many requests in a given amount of time ("rate limiting").
+		Description: `The user has sent too many requests in a given amount of time ("rate limiting").
 
 The response representations SHOULD include details explaining the condition, and MAY include a Retry-After header indicating how long to wait before making a new request.
 
@@ -664,9 +584,7 @@ Responses with the 429 status code MUST NOT be stored by a cache.
 	{
 		Code: 431,
 		Name: "Request Header Fields Too Large",
-		Description: `
-
-The server is unwilling to process the request because its header fields are too large. The request MAY be resubmitted after reducing the size of the request header fields.
+		Description: `The server is unwilling to process the request because its header fields are too large. The request MAY be resubmitted after reducing the size of the request header fields.
 
 It can be used both when the set of request header fields in total is too large, and when a single header field is at fault.  In the latter case, the response representation SHOULD specify which header field was too large.
 
@@ -690,9 +608,7 @@ Responses with the 431 status code MUST NOT be stored by a cache.
 	{
 		Code: 444,
 		Name: "Connection Closed Without Response",
-		Description: `
-
-A non-standard status code used to instruct <a href="https://nginx.org">nginx</a> to close the connection without sending a response to the client, most commonly used to deny malicious or malformed requests.
+		Description: `A non-standard status code used to instruct <a href="https://nginx.org">nginx</a> to close the connection without sending a response to the client, most commonly used to deny malicious or malformed requests.
 
 This status code is not seen by the client, it only appears in nginx log files.
 `,
@@ -700,9 +616,7 @@ This status code is not seen by the client, it only appears in nginx log files.
 	{
 		Code: 451,
 		Name: "Unavailable For Legal Reasons",
-		Description: `
-
-The server is denying access to the resource as a consequence of a legal demand.
+		Description: `The server is denying access to the resource as a consequence of a legal demand.
 
 The server in question might not be an origin server. This type of legal demand typically most directly affects the operations of ISPs and search engines.
 
@@ -734,25 +648,19 @@ A 451 response is cacheable by default; i.e., unless otherwise indicated by the 
 	{
 		Code: 499,
 		Name: "Client Closed Request",
-		Description: `
-
-A non-standard status code introduced by <a href="https://nginx.org">nginx</a> for the case when a client closes the connection while nginx is processing the request.
+		Description: `A non-standard status code introduced by <a href="https://nginx.org">nginx</a> for the case when a client closes the connection while nginx is processing the request.
 `,
 	},
 	{
 		Code: 500,
 		Name: "Internal Server Error",
-		Description: `
-
-The server encountered an unexpected condition that prevented it from fulfilling the request.
+		Description: `The server encountered an unexpected condition that prevented it from fulfilling the request.
 `,
 	},
 	{
 		Code: 501,
 		Name: "Not Implemented",
-		Description: `
-
-The server does not support the functionality required to fulfill the request.
+		Description: `The server does not support the functionality required to fulfill the request.
 
 This is the appropriate response when the server does not recognize the request method and is not capable of supporting it for any resource.
 
@@ -762,17 +670,13 @@ A 501 response is cacheable by default; i.e., unless otherwise indicated by the 
 	{
 		Code: 502,
 		Name: "Bad Gateway",
-		Description: `
-
-The server, while acting as a gateway or proxy, received an invalid response from an inbound server it accessed while attempting to fulfill the request.
+		Description: `The server, while acting as a gateway or proxy, received an invalid response from an inbound server it accessed while attempting to fulfill the request.
 `,
 	},
 	{
 		Code: 503,
 		Name: "Service Unavailable",
-		Description: `
-
-The server is currently unable to handle the request due to a temporary overload or scheduled maintenance, which will likely be alleviated after some delay.
+		Description: `The server is currently unable to handle the request due to a temporary overload or scheduled maintenance, which will likely be alleviated after some delay.
 
 The server MAY send a Retry-After header field to suggest an appropriate amount of time for the client to wait before retrying the request.
 
@@ -782,17 +686,13 @@ Note: The existence of the 503 status code does not imply that a server has to u
 	{
 		Code: 504,
 		Name: "Gateway Timeout",
-		Description: `
-
-The server, while acting as a gateway or proxy, did not receive a timely response from an upstream server it needed to access in order to complete the request.
+		Description: `The server, while acting as a gateway or proxy, did not receive a timely response from an upstream server it needed to access in order to complete the request.
 `,
 	},
 	{
 		Code: 505,
 		Name: "HTTP Version Not Supported",
-		Description: `
-
-The server does not support, or refuses to support, the major version of HTTP that was used in the request message.
+		Description: `The server does not support, or refuses to support, the major version of HTTP that was used in the request message.
 
 The server is indicating that it is unable or unwilling to complete the request using the same major version as the client, as described in <a href="https://tools.ietf.org/html/rfc7230#section-2.6">Section 2.6 of RFC7230</a>, other than with this error message. The server SHOULD generate a representation for the 505 response that describes why that version is not supported and what other protocols are supported by that server.
 `,
@@ -800,17 +700,13 @@ The server is indicating that it is unable or unwilling to complete the request 
 	{
 		Code: 506,
 		Name: "Variant Also Negotiates",
-		Description: `
-
-The server has an internal configuration error: the chosen variant resource is configured to engage in transparent content negotiation itself, and is therefore not a proper end point in the negotiation process.
+		Description: `The server has an internal configuration error: the chosen variant resource is configured to engage in transparent content negotiation itself, and is therefore not a proper end point in the negotiation process.
 `,
 	},
 	{
 		Code: 507,
 		Name: "Insufficient Storage",
-		Description: `
-
-The method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request.
+		Description: `The method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request.
 
 This condition is considered to be temporary. If the request that received this status code was the result of a user action, the request MUST NOT be repeated until it is requested by a separate user action.
 `,
@@ -818,17 +714,13 @@ This condition is considered to be temporary. If the request that received this 
 	{
 		Code: 508,
 		Name: "Loop Detected",
-		Description: `
-
-The server terminated an operation because it encountered an infinite loop while processing a request with "Depth: infinity". This status indicates that the entire operation failed.
+		Description: `The server terminated an operation because it encountered an infinite loop while processing a request with "Depth: infinity". This status indicates that the entire operation failed.
 `,
 	},
 	{
 		Code: 510,
 		Name: "Not Extended",
-		Description: `
-
-The policy for accessing the resource has not been met in the request. The server should send back all the information necessary for the client to issue an extended request.
+		Description: `The policy for accessing the resource has not been met in the request. The server should send back all the information necessary for the client to issue an extended request.
 
 It is outside the scope of this specification to specify how the extensions inform the client.
 
@@ -838,9 +730,7 @@ If the 510 response contains information about extensions that were not present 
 	{
 		Code: 511,
 		Name: "Network Authentication Required",
-		Description: `
-
-The client needs to authenticate to gain network access.
+		Description: `The client needs to authenticate to gain network access.
 
 The response representation SHOULD contain a link to a resource that allows the user to submit credentials (e.g., with an HTML form).
 
@@ -882,9 +772,7 @@ Here, the 511 status code assures that non-browser clients will not interpret th
 	{
 		Code: 599,
 		Name: "Network Connect Timeout Error",
-		Description: `
-
-This status code is not specified in any RFCs, but is used by some HTTP proxies to signal a network connect timeout behind the proxy to a client in front of the proxy.
+		Description: `This status code is not specified in any RFCs, but is used by some HTTP proxies to signal a network connect timeout behind the proxy to a client in front of the proxy.
 `,
 	},
 }
