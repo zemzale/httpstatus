@@ -86,17 +86,15 @@ A 203 response is cacheable by default; i.e., unless otherwise indicated by the 
 	{
 		Code: 204,
 		Name: "No Content",
-		Description: `
-
-The server has successfully fulfilled the request and that there is no additional content to send in the response payload body.
+		Description: `The server has successfully fulfilled the request and that there is no additional content to send in the response payload body.
 
 Metadata in the response header fields refer to the target resource and its selected representation after the requested action was applied.
 
 For example, if a 204 status code is received in response to a PUT request and the response contains an ETag header field, then the PUT was successful and the ETag field-value contains the entity-tag for the new representation of that target resource.
 
-The 204 response allows a server to indicate that the action has been successfully applied to the target resource, while implying that the user agent does not need to traverse away from its current &quot;document view&quot; (if any). The server assumes that the user agent will provide some indication of the success to its user, in accord with its own interface, and apply any new or updated metadata in the response to its active representation.
+The 204 response allows a server to indicate that the action has been successfully applied to the target resource, while implying that the user agent does not need to traverse away from its current "document view" (if any). The server assumes that the user agent will provide some indication of the success to its user, in accord with its own interface, and apply any new or updated metadata in the response to its active representation.
 
-For example, a 204 status code is commonly used with document editing interfaces corresponding to a &quot;save&quot; action, such that the document being saved remains available to the user for editing. It is also frequently used with interfaces that expect automated data transfers to be prevalent, such as within distributed version control systems.
+For example, a 204 status code is commonly used with document editing interfaces corresponding to a "save" action, such that the document being saved remains available to the user for editing. It is also frequently used with interfaces that expect automated data transfers to be prevalent, such as within distributed version control systems.
 
 A 204 response is terminated by the first empty line after the header fields because it cannot contain a message body.
 
@@ -108,7 +106,7 @@ A 204 response is cacheable by default; i.e., unless otherwise indicated by the 
 		Name: "Reset Content",
 		Description: `
 
-The server has fulfilled the request and desires that the user agent reset the &quot;document view&quot;, which caused the request to be sent, to its original state as received from the origin server.
+The server has fulfilled the request and desires that the user agent reset the "document view", which caused the request to be sent, to its original state as received from the origin server.
 
 This response is intended to support a common data entry use case where the user receives content that supports data entry (a form, notepad, canvas, etc.), enters or manipulates data in that space, causes the entered data to be submitted in a request, and then the data entry mechanism is reset for the next entry so that the user can easily initiate another input action.
 
@@ -132,7 +130,7 @@ Content-Type: image/gif
 
 ... 26012 bytes of partial image data ...
 </code></pre>
-If multiple parts are being transferred, the server generating the 206 response MUST generate a &quot;multipart/byteranges&quot; payload<sup><a href="#ref-2">2</a></sup>, and a Content-Type header field containing the multipart/byteranges media type and its required boundary parameter. To avoid confusion with single-part responses, a server MUST NOT generate a Content-Range header field in the HTTP header section of a multiple part response (this field will be sent in each part instead).
+If multiple parts are being transferred, the server generating the 206 response MUST generate a "multipart/byteranges" payload<sup><a href="#ref-2">2</a></sup>, and a Content-Type header field containing the multipart/byteranges media type and its required boundary parameter. To avoid confusion with single-part responses, a server MUST NOT generate a Content-Range header field in the HTTP header section of a multiple part response (this field will be sent in each part instead).
 
 Within the header area of each body part in the multipart payload, the server MUST generate a Content-Range header field corresponding to the range being enclosed in that body part. If the selected representation would have had a Content-Type header field in a <a href="/200">200 OK</a> response, the server SHOULD generate that same Content-Type field in the header area of each body part. For example:
 <pre><code>HTTP/1.1 206 Partial Content
@@ -195,11 +193,11 @@ Used inside a DAV: propstat response element to avoid enumerating the internal m
 
 For each binding to a collection inside the request's scope, only one will be reported with a 200 status, while subsequent DAV:response elements for all other bindings will use the 208 status, and no DAV:response elements for their descendants are included.
 
-Note that the 208 status will only occur for &quot;Depth: infinity&quot; requests, and that it is of particular importance when the multiple collection bindings cause a bind loop<sup><a href="#ref-1">1</a></sup>.
+Note that the 208 status will only occur for "Depth: infinity" requests, and that it is of particular importance when the multiple collection bindings cause a bind loop<sup><a href="#ref-1">1</a></sup>.
 
 A client can request the DAV:resource-id property in a PROPFIND request to guarantee that they can accurately reconstruct the binding structure of a collection with multiple bindings to a single resource.
 
-For backward compatibility with clients not aware of the 208 status code appearing in multistatus response bodies, it SHOULD NOT be used unless the client has signaled support for this specification using the &quot;DAV&quot; request header<sup><a href="#ref-2">2</a></sup>. Instead, a <a href="/508">508 Loop Detected</a> status should be returned when a binding loop is discovered. This allows the server to return the 508 as the top-level return status, if it discovers it before it started the response, or in the middle of a multistatus, if it discovers it in the middle of streaming out a multistatus response.
+For backward compatibility with clients not aware of the 208 status code appearing in multistatus response bodies, it SHOULD NOT be used unless the client has signaled support for this specification using the "DAV" request header<sup><a href="#ref-2">2</a></sup>. Instead, a <a href="/508">508 Loop Detected</a> status should be returned when a binding loop is discovered. This allows the server to return the 508 as the top-level return status, if it discovers it before it started the response, or in the middle of a multistatus, if it discovers it in the middle of streaming out a multistatus response.
 `,
 	},
 	{
@@ -233,7 +231,7 @@ For request methods other than HEAD, the server SHOULD generate a payload in the
 
 A 300 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls<sup><a href="#ref-2">2</a></sup>.
 
-Note: The original proposal for the 300 status code defined the URI header field as providing a list of alternative representations, such that it would be usable for 200, 300, and 406 responses and be transferred in responses to the HEAD method. However, lack of deployment and disagreement over syntax led to both URI and Alternates (a subsequent proposal) being dropped from this specification. It is possible to communicate the list using a set of Link header fields<sup><a href="#ref-3">3</a></sup>, each with a relationship of &quot;alternate&quot;, though deployment is a chicken-and-egg problem.
+Note: The original proposal for the 300 status code defined the URI header field as providing a list of alternative representations, such that it would be usable for 200, 300, and 406 responses and be transferred in responses to the HEAD method. However, lack of deployment and disagreement over syntax led to both URI and Alternates (a subsequent proposal) being dropped from this specification. It is possible to communicate the list using a set of Link header fields<sup><a href="#ref-3">3</a></sup>, each with a relationship of "alternate", though deployment is a chicken-and-egg problem.
 `,
 	},
 	{
@@ -375,7 +373,7 @@ A server that wishes to make public why the request has been forbidden can descr
 
 If authentication credentials were provided in the request, the server considers them insufficient to grant access. The client SHOULD NOT automatically repeat the request with the same credentials. The client MAY repeat the request with new or different credentials. However, a request might be forbidden for reasons unrelated to the credentials.
 
-An origin server that wishes to &quot;hide&quot; the current existence of a forbidden target resource MAY instead respond with a status code of <a href="/404">404 Not Found</a>.
+An origin server that wishes to "hide" the current existence of a forbidden target resource MAY instead respond with a status code of <a href="/404">404 Not Found</a>.
 `,
 	},
 	{
@@ -429,7 +427,7 @@ The proxy MUST send a Proxy-Authenticate header field<sup><a href="#ref-1">1</a>
 
 The server did not receive a complete request message within the time that it was prepared to wait.
 
-A server SHOULD send the &quot;close&quot; connection option<sup><a href="#ref-1">1</a></sup> in the response, since 408 implies that the server has decided to close the connection rather than continue waiting. If the client has an outstanding request in transit, the client MAY repeat that request on a new connection.
+A server SHOULD send the "close" connection option<sup><a href="#ref-1">1</a></sup> in the response, since 408 implies that the server has decided to close the connection rather than continue waiting. If the client has an outstanding request in transit, the client MAY repeat that request on a new connection.
 `,
 	},
 	{
@@ -453,7 +451,7 @@ The target resource is no longer available at the origin server and that this co
 
 If the origin server does not know, or has no facility to determine, whether or not the condition is permanent, the status code <a href="/404">404 Not Found</a> ought to be used instead.
 
-The 410 response is primarily intended to assist the task of web maintenance by notifying the recipient that the resource is intentionally unavailable and that the server owners desire that remote links to that resource be removed. Such an event is common for limited-time, promotional services and for resources belonging to individuals no longer associated with the origin server's site. It is not necessary to mark all permanently unavailable resources as &quot;gone&quot; or to keep the mark for any length of time -- that is left to the discretion of the server owner.
+The 410 response is primarily intended to assist the task of web maintenance by notifying the recipient that the resource is intentionally unavailable and that the server owners desire that remote links to that resource be removed. Such an event is common for limited-time, promotional services and for resources belonging to individuals no longer associated with the origin server's site. It is not necessary to mark all permanently unavailable resources as "gone" or to keep the mark for any length of time -- that is left to the discretion of the server owner.
 
 A 410 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls<sup><a href="#ref-1">1</a></sup>.
 `,
@@ -497,7 +495,7 @@ If the condition is temporary, the server SHOULD generate a Retry-After header f
 
 The server is refusing to service the request because the request-target<sup><a href="#ref-1">1</a></sup> is longer than the server is willing to interpret.
 
-This rare condition is only likely to occur when a client has improperly converted a POST request to a GET request with long query information, when the client has descended into a &quot;black hole&quot; of redirection (e.g., a redirected URI prefix that points to a suffix of itself) or when the server is under attack by a client attempting to exploit potential security holes.
+This rare condition is only likely to occur when a client has improperly converted a POST request to a GET request with long query information, when the client has descended into a "black hole" of redirection (e.g., a redirected URI prefix that points to a suffix of itself) or when the server is under attack by a client attempting to exploit potential security holes.
 
 A 414 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls <sup><a href="#ref-2">2</a></sup>.
 `,
@@ -542,7 +540,7 @@ The expectation given in the request's Expect header field<sup><a href="#ref-1">
 		Name: "> I'm a teapot",
 		Description: `
 
-Any attempt to brew coffee with a teapot should result in the error code &quot;418 I'm a teapot&quot;. The resulting entity body MAY be short and stout.
+Any attempt to brew coffee with a teapot should result in the error code "418 I'm a teapot". The resulting entity body MAY be short and stout.
 `,
 	},
 	{
@@ -615,7 +613,7 @@ This service requires use of the HTTP/3.0 protocol.
 
 The origin server requires the request to be conditional.
 
-Its typical use is to avoid the &quot;lost update&quot; problem, where a client GETs a resource's state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict. By requiring requests to be conditional, the server can assure that clients are working with the correct copies.
+Its typical use is to avoid the "lost update" problem, where a client GETs a resource's state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict. By requiring requests to be conditional, the server can assure that clients are working with the correct copies.
 
 Responses using this status code SHOULD explain how to resubmit the request successfully. For example:
 <pre><code>HTTP/1.1 428 Precondition Required
@@ -627,7 +625,7 @@ Content-Type: text/html
   &lt;/head&gt;
   &lt;body&gt;
     &lt;h1&gt;Precondition Required&lt;/h1&gt;
-    &lt;p&gt;This request is required to be conditional; try using &quot;If-Match&quot;.&lt;/p&gt;
+    &lt;p&gt;This request is required to be conditional; try using "If-Match".&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
@@ -639,7 +637,7 @@ Responses with the 428 status code MUST NOT be stored by a cache.
 		Name: "Too Many Requests",
 		Description: `
 
-The user has sent too many requests in a given amount of time (&quot;rate limiting&quot;).
+The user has sent too many requests in a given amount of time ("rate limiting").
 
 The response representations SHOULD include details explaining the condition, and MAY include a Retry-After header indicating how long to wait before making a new request.
 
@@ -683,7 +681,7 @@ Content-Type: text/html
   &lt;/head&gt;
   &lt;body&gt;
     &lt;h1&gt;Request Header Fields Too Large&lt;/h1&gt;
-    &lt;p&gt;The &quot;Example&quot; header was too large.&lt;/p&gt;
+    &lt;p&gt;The "Example" header was too large.&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
@@ -711,7 +709,7 @@ The server in question might not be an origin server. This type of legal demand 
 
 Responses using this status code SHOULD include an explanation, in the response body, of the details of the legal demand: the party making it, the applicable legislation or regulation, and what classes of person and resource it applies to. For example:
 <pre><code>HTTP/1.1 451 Unavailable For Legal Reasons
-Link: &lt;https://spqr.example.org/legislatione&gt;; rel=&quot;blocked-by&quot;
+Link: &lt;https://spqr.example.org/legislatione&gt;; rel="blocked-by"
 Content-Type: text/html
 
 &lt;html&gt;
@@ -823,7 +821,7 @@ This condition is considered to be temporary. If the request that received this 
 		Name: "Loop Detected",
 		Description: `
 
-The server terminated an operation because it encountered an infinite loop while processing a request with &quot;Depth: infinity&quot;. This status indicates that the entire operation failed.
+The server terminated an operation because it encountered an infinite loop while processing a request with "Depth: infinity". This status indicates that the entire operation failed.
 `,
 	},
 	{
@@ -853,11 +851,11 @@ The 511 status SHOULD NOT be generated by origin servers; it is intended for use
 
 Responses with the 511 status code MUST NOT be stored by a cache.
 
-The 511 status code is designed to mitigate problems caused by &quot;captive portals&quot; to software (especially non-browser agents) that is expecting a response from the server that a request was made to, not the intervening network infrastructure. It is not intended to encourage deployment of captive portals -- only to limit the damage caused by them.
+The 511 status code is designed to mitigate problems caused by "captive portals" to software (especially non-browser agents) that is expecting a response from the server that a request was made to, not the intervening network infrastructure. It is not intended to encourage deployment of captive portals -- only to limit the damage caused by them.
 
-A network operator wishing to require some authentication, acceptance of terms, or other user interaction before granting access usually does so by identifying clients who have not done so (&quot;unknown clients&quot;) using their Media Access Control (MAC) addresses.
+A network operator wishing to require some authentication, acceptance of terms, or other user interaction before granting access usually does so by identifying clients who have not done so ("unknown clients") using their Media Access Control (MAC) addresses.
 
-Unknown clients then have all traffic blocked, except for that on TCP port 80, which is sent to an HTTP server (the &quot;login server&quot;) dedicated to &quot;logging in&quot; unknown clients, and of course traffic to the login server itself.
+Unknown clients then have all traffic blocked, except for that on TCP port 80, which is sent to an HTTP server (the "login server") dedicated to "logging in" unknown clients, and of course traffic to the login server itself.
 
 For example, a user agent might connect to a network and make the following HTTP request on TCP port 80:
 <pre><code>GET /index.htm HTTP/1.1
@@ -870,10 +868,10 @@ Content-Type: text/html
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Network Authentication Required&lt;/title&gt;
-    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0; url=https://login.example.net/&quot;&gt;
+    &lt;meta http-equiv="refresh" content="0; url=https://login.example.net/"&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;p&gt;You need to &lt;a href=&quot;https://login.example.net/&quot;&gt;
+    &lt;p&gt;You need to &lt;a href="https://login.example.net/"&gt;
     authenticate with the local network&lt;/a&gt; in order to gain
     access.&lt;/p&gt;
   &lt;/body&gt;
