@@ -3,7 +3,7 @@
 102 : good
 200 : good
 201 : good
-202 : bad
+202 : good
 203 : bad
 204 : bad
 205 : bad
