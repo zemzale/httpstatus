@@ -123,7 +123,7 @@ Content-Type: image/gif
 </code></pre>
 If multiple parts are being transferred, the server generating the 206 response MUST generate a "multipart/byteranges" payload, and a Content-Type header field containing the multipart/byteranges media type and its required boundary parameter. To avoid confusion with single-part responses, a server MUST NOT generate a Content-Range header field in the HTTP header section of a multiple part response (this field will be sent in each part instead).
 
-Within the header area of each body part in the multipart payload, the server MUST generate a Content-Range header field corresponding to the range being enclosed in that body part. If the selected representation would have had a Content-Type header field in a <a href="/200">200 OK</a> response, the server SHOULD generate that same Content-Type field in the header area of each body part. For example:
+Within the header area of each body part in the multipart payload, the server MUST generate a Content-Range header field corresponding to the range being enclosed in that body part. If the selected representation would have had a Content-Type header field in a 200 OK response, the server SHOULD generate that same Content-Type field in the header area of each body part. For example:
 <pre><code>HTTP/1.1 206 Partial Content
 Date: Wed, 15 Nov 1995 06:25:24 GMT
 Last-Modified: Wed, 15 Nov 1995 04:58:08 GMT
@@ -148,9 +148,9 @@ A server MUST NOT generate a multipart response to a request for a single range,
 
 When a multipart response payload is generated, the server SHOULD send the parts in the same order that the corresponding byte-range-spec appeared in the received Range header field, excluding those ranges that were deemed unsatisfiable or that were coalesced into other ranges. A client that receives a multipart response MUST inspect the Content-Range header field present in each body part in order to determine which range is contained in that body part; a client cannot rely on receiving the same ranges that it requested, nor the same order that it requested.
 
-When a 206 response is generated, the server MUST generate the following header fields, in addition to those required above, if the field would have been sent in a <a href="/200">200 OK</a> response to the same request: Date, Cache-Control, ETag, Expires, Content-Location, and Vary.
+When a 206 response is generated, the server MUST generate the following header fields, in addition to those required above, if the field would have been sent in a 200 OK response to the same request: Date, Cache-Control, ETag, Expires, Content-Location, and Vary.
 
-If a 206 is generated in response to a request with an If-Range header field, the sender SHOULD NOT generate other representation header fields beyond those required above, because the client is understood to already have a prior response containing those header fields. Otherwise, the sender MUST generate all of the representation header fields that would have been sent in a <a href="/200">200 OK</a> response to the same request.
+If a 206 is generated in response to a request with an If-Range header field, the sender SHOULD NOT generate other representation header fields beyond those required above, because the client is understood to already have a prior response containing those header fields. Otherwise, the sender MUST generate all of the representation header fields that would have been sent in a 200 OK response to the same request.
 
 A 206 response is cacheable by default; i.e., unless otherwise indicated by explicit cache controls.`,
 	},
@@ -167,9 +167,9 @@ The 'multistatus' root element holds zero or more 'response' elements in any ord
 
 A Multi-Status response uses one out of two distinct formats for representing the status:
 
-1. A 'status' element as child of the 'response' element indicates the status of the message execution for the identified resource as a whole. Some method definitions provide information about specific status codes clients should be prepared to see in a response. However, clients MUST be able to handle other status codes, using the generic rules defined in <a href="https://tools.ietf.org/html/rfc2616#section-10">RFC2616 Section 10</a>.
+1. A 'status' element as child of the 'response' element indicates the status of the message execution for the identified resource as a whole. Some method definitions provide information about specific status codes clients should be prepared to see in a response. However, clients MUST be able to handle other status codes, using the generic rules defined in RFC2616 Section 10.
 
-2. For PROPFIND and PROPPATCH, the format has been extended using the 'propstat' element instead of 'status', providing information about individual properties of a resource.  This format is specific to PROPFIND and PROPPATCH, and is described in detail in <a href="https://tools.ietf.org/html/rfc4918#section-9.1">RFC4918 Section 9.1</a> and <a href="https://tools.ietf.org/html/rfc4918#section-9.2">RFC4918 Section 9.2</a>.`,
+2. For PROPFIND and PROPPATCH, the format has been extended using the 'propstat' element instead of 'status', providing information about individual properties of a resource.  This format is specific to PROPFIND and PROPPATCH, and is described in detail in RFC4918 Section 9.1 and RFC4918 Section 9.2.`,
 	},
 	{
 		Code: 208,
@@ -182,18 +182,18 @@ Note that the 208 status will only occur for "Depth: infinity" requests, and tha
 
 A client can request the DAV:resource-id property in a PROPFIND request to guarantee that they can accurately reconstruct the binding structure of a collection with multiple bindings to a single resource.
 
-For backward compatibility with clients not aware of the 208 status code appearing in multistatus response bodies, it SHOULD NOT be used unless the client has signaled support for this specification using the "DAV" request header. Instead, a <a href="/508">508 Loop Detected</a> status should be returned when a binding loop is discovered. This allows the server to return the 508 as the top-level return status, if it discovers it before it started the response, or in the middle of a multistatus, if it discovers it in the middle of streaming out a multistatus response.`,
+For backward compatibility with clients not aware of the 208 status code appearing in multistatus response bodies, it SHOULD NOT be used unless the client has signaled support for this specification using the "DAV" request header. Instead, a 508 Loop Detected status should be returned when a binding loop is discovered. This allows the server to return the 508 as the top-level return status, if it discovers it before it started the response, or in the middle of a multistatus, if it discovers it in the middle of streaming out a multistatus response.`,
 	},
 	{
 		Code: 226,
 		Name: "IM Used",
 		Description: `The server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.
 
-The actual current instance might not be available except by combining this response with other previous or future responses, as appropriate for the specific instance-manipulation(s). If so, the headers of the resulting instance are the result of combining the headers from the 226 response and the other instances, following the rules in <a href="https://tools.ietf.org/html/rfc2616#section-13.5.3">section 13.5.3</a> of the HTTP/1.1 specification.
+The actual current instance might not be available except by combining this response with other previous or future responses, as appropriate for the specific instance-manipulation(s). If so, the headers of the resulting instance are the result of combining the headers from the 226 response and the other instances, following the rules in section 13.5.3 of the HTTP/1.1 specification.
 
 The request MUST have included an A-IM header field listing at least one instance-manipulation. The response MUST include an Etag header field giving the entity tag of the current instance.
 
-A response received with a status code of 226 MAY be stored by a cache and used in reply to a subsequent request, subject to the HTTP expiration mechanism and any Cache-Control headers, and to the requirements in <a href="https://tools.ietf.org/html/rfc3229#section-10.6">section 10.6</a>.
+A response received with a status code of 226 MAY be stored by a cache and used in reply to a subsequent request, subject to the HTTP expiration mechanism and any Cache-Control headers, and to the requirements in section 10.6.
 
 A response received with a status code of 226 MAY be used by a cache, in conjunction with a cache entry for the base instance, to create a cache entry for the current instance.`,
 	},
@@ -221,7 +221,7 @@ Clients with link-editing capabilities ought to automatically re-link references
 
 The server SHOULD generate a Location header field in the response containing a preferred URI reference for the new permanent URI. The user agent MAY use the Location field value for automatic redirection. The server's response payload usually contains a short hypertext note with a hyperlink to the new URI(s).
 
-Note: For historical reasons, a user agent MAY change the request method from POST to GET for the subsequent request. If this behavior is undesired, the <a href="/307">307 Temporary Redirect</a> status code can be used instead.
+Note: For historical reasons, a user agent MAY change the request method from POST to GET for the subsequent request. If this behavior is undesired, the 307 Temporary Redirect status code can be used instead.
 
 A 301 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls.`,
 	},
@@ -232,7 +232,7 @@ A 301 response is cacheable by default; i.e., unless otherwise indicated by the 
 
 The server SHOULD generate a Location header field in the response containing a URI reference for the different URI. The user agent MAY use the Location field value for automatic redirection. The server's response payload usually contains a short hypertext note with a hyperlink to the different URI(s).
 
-Note: For historical reasons, a user agent MAY change the request method from POST to GET for the subsequent request. If this behavior is undesired, the <a href="/307">307 Temporary Redirect</a> status code can be used instead.`,
+Note: For historical reasons, a user agent MAY change the request method from POST to GET for the subsequent request. If this behavior is undesired, the 307 Temporary Redirect status code can be used instead.`,
 	},
 	{
 		Code: 303,
@@ -250,15 +250,15 @@ Except for responses to a HEAD request, the representation of a 303 response oug
 	{
 		Code: 304,
 		Name: "Not Modified",
-		Description: `A conditional GET or HEAD request has been received and would have resulted in a <a href="/200">200 OK</a> response if it were not for the fact that the condition evaluated to false.
+		Description: `A conditional GET or HEAD request has been received and would have resulted in a 200 OK response if it were not for the fact that the condition evaluated to false.
 
-In other words, there is no need for the server to transfer a representation of the target resource because the request indicates that the client, which made the request conditional, already has a valid representation; the server is therefore redirecting the client to make use of that stored representation as if it were the payload of a <a href="/200">200 OK</a> response.
+In other words, there is no need for the server to transfer a representation of the target resource because the request indicates that the client, which made the request conditional, already has a valid representation; the server is therefore redirecting the client to make use of that stored representation as if it were the payload of a 200 OK response.
 
-The server generating a 304 response MUST generate any of the following header fields that would have been sent in a <a href="/200">200 OK</a> response to the same request: Cache-Control, Content-Location, Date, ETag, Expires, and Vary.
+The server generating a 304 response MUST generate any of the following header fields that would have been sent in a 200 OK response to the same request: Cache-Control, Content-Location, Date, ETag, Expires, and Vary.
 
 Since the goal of a 304 response is to minimize information transfer when the recipient already has one or more cached representations, a sender SHOULD NOT generate representation metadata other than the above listed fields unless said metadata exists for the purpose of guiding cache updates (e.g., Last-Modified might be useful if the response does not have an ETag field).
 
-Requirements on a cache that receives a 304 response are defined in <a href="https://tools.ietf.org/html/rfc7234#section-4.3.4">Section 4.3.4 of RFC7234</a>. If the conditional request originated with an outbound client, such as a user agent with its own cache sending a conditional GET to a shared proxy, then the proxy SHOULD forward the 304 response to that client.
+Requirements on a cache that receives a 304 response are defined in Section 4.3.4 of RFC7234. If the conditional request originated with an outbound client, such as a user agent with its own cache sending a conditional GET to a shared proxy, then the proxy SHOULD forward the 304 response to that client.
 
 A 304 response cannot contain a message-body; it is always terminated by the first empty line after the header fields.`,
 	},
@@ -276,7 +276,7 @@ Since the redirection can change over time, the client ought to continue using t
 
 The server SHOULD generate a Location header field in the response containing a URI reference for the different URI. The user agent MAY use the Location field value for automatic redirection. The server's response payload usually contains a short hypertext note with a hyperlink to the different URI(s).
 
-Note: This status code is similar to 302 Found, except that it does not allow changing the request method from POST to GET. This specification defines no equivalent counterpart for <a href="/301">301 Moved Permanently</a> (<a href="https://tools.ietf.org/html/rfc7238">RFC7238</a>, however, proposes defining the status code <a href="/308">308 Permanent Redirect</a> for this purpose).`,
+Note: This status code is similar to 302 Found, except that it does not allow changing the request method from POST to GET. This specification defines no equivalent counterpart for 301 Moved Permanently (RFC7238, however, proposes defining the status code 308 Permanent Redirect for this purpose).`,
 	},
 	{
 		Code: 308,
@@ -289,7 +289,7 @@ The server SHOULD generate a Location header field in the response containing a 
 
 A 308 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls.
 
-Note: This status code is similar to <a href="/301">301 Moved Permanently</a>, except that it does not allow changing the request method from POST to GET.`,
+Note: This status code is similar to 301 Moved Permanently, except that it does not allow changing the request method from POST to GET.`,
 	},
 	{
 		Code:        400,
@@ -319,14 +319,14 @@ A server that wishes to make public why the request has been forbidden can descr
 
 If authentication credentials were provided in the request, the server considers them insufficient to grant access. The client SHOULD NOT automatically repeat the request with the same credentials. The client MAY repeat the request with new or different credentials. However, a request might be forbidden for reasons unrelated to the credentials.
 
-An origin server that wishes to "hide" the current existence of a forbidden target resource MAY instead respond with a status code of <a href="/404">404 Not Found</a>.`,
+An origin server that wishes to "hide" the current existence of a forbidden target resource MAY instead respond with a status code of 404 Not Found.`,
 	},
 	{
 		Code: 404,
 		Name: "Not Found",
 		Description: `The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.
 
-A 404 status code does not indicate whether this lack of representation is temporary or permanent; the <a href="/410">410 Gone</a> status code is preferred over 404 if the origin server knows, presumably through some configurable means, that the condition is likely to be permanent.
+A 404 status code does not indicate whether this lack of representation is temporary or permanent; the 410 Gone status code is preferred over 404 if the origin server knows, presumably through some configurable means, that the condition is likely to be permanent.
 
 A 404 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls.`,
 	},
@@ -344,14 +344,14 @@ A 405 response is cacheable by default; i.e., unless otherwise indicated by the 
 		Name: "Not Acceptable",
 		Description: `The target resource does not have a current representation that would be acceptable to the user agent, according to the proactive negotiation header fields received in the request, and the server is unwilling to supply a default representation.
 
-The server SHOULD generate a payload containing a list of available representation characteristics and corresponding resource identifiers from which the user or user agent can choose the one most appropriate. A user agent MAY automatically select the most appropriate choice from that list. However, this specification does not define any standard for such automatic selection, as described in <a href="https://tools.ietf.org/html/rfc7231#section-6.4.1">RFC7231 Section 6.4.1</a>.`,
+The server SHOULD generate a payload containing a list of available representation characteristics and corresponding resource identifiers from which the user or user agent can choose the one most appropriate. A user agent MAY automatically select the most appropriate choice from that list. However, this specification does not define any standard for such automatic selection, as described in RFC7231 Section 6.4.1.`,
 	},
 	{
 		Code: 407,
 		Name: "Proxy Authentication Required",
-		Description: `Similar to <a href="/401">401 Unauthorized</a>, but it indicates that the client needs to authenticate itself in order to use a proxy.
+		Description: `Similar to 401 Unauthorized, but it indicates that the client needs to authenticate itself in order to use a proxy.
 
-The proxy MUST send a Proxy-Authenticate header field<sup><a href="#ref-1">1</a></sup> containing a challenge applicable to that proxy for the target resource. The client MAY repeat the request with a new or replaced Proxy-Authorization header field<sup><a href="#ref-2">2</a></sup>.`,
+The proxy MUST send a Proxy-Authenticate header field<sup>1</sup> containing a challenge applicable to that proxy for the target resource. The client MAY repeat the request with a new or replaced Proxy-Authorization header field<sup>2</sup>.`,
 	},
 	{
 		Code: 408,
@@ -374,7 +374,7 @@ Conflicts are most likely to occur in response to a PUT request. For example, if
 		Name: "Gone",
 		Description: `The target resource is no longer available at the origin server and that this condition is likely to be permanent.
 
-If the origin server does not know, or has no facility to determine, whether or not the condition is permanent, the status code <a href="/404">404 Not Found</a> ought to be used instead.
+If the origin server does not know, or has no facility to determine, whether or not the condition is permanent, the status code 404 Not Found ought to be used instead.
 
 The 410 response is primarily intended to assist the task of web maintenance by notifying the recipient that the resource is intentionally unavailable and that the server owners desire that remote links to that resource be removed. Such an event is common for limited-time, promotional services and for resources belonging to individuals no longer associated with the origin server's site. It is not necessary to mark all permanently unavailable resources as "gone" or to keep the mark for any length of time -- that is left to the discretion of the server owner.
 
@@ -431,7 +431,7 @@ For example:
 Date: Fri, 20 Jan 2012 15:41:54 GMT
 Content-Range: bytes */47022
 </code></pre>
-Note: Because servers are free to ignore Range, many implementations will simply respond with the entire selected representation in a <a href="/200">200 OK</a> response. That is partly because most clients are prepared to receive a <a href="/200">200 OK</a> to complete the task (albeit less efficiently) and partly because clients might not stop making an invalid partial request until they have received a complete representation. Thus, clients cannot depend on receiving a 416 Range Not Satisfiable response even when it is most appropriate.`,
+Note: Because servers are free to ignore Range, many implementations will simply respond with the entire selected representation in a 200 OK response. That is partly because most clients are prepared to receive a 200 OK to complete the task (albeit less efficiently) and partly because clients might not stop making an invalid partial request until they have received a complete representation. Thus, clients cannot depend on receiving a 416 Range Not Satisfiable response even when it is most appropriate.`,
 	},
 	{
 		Code:        417,
@@ -448,7 +448,7 @@ Note: Because servers are free to ignore Range, many implementations will simply
 		Name: "Misdirected Request",
 		Description: `The request was directed at a server that is not able to produce a response. This can be sent by a server that is not configured to produce responses for the combination of scheme and authority that are included in the request URI.
 
-Clients receiving a 421 Misdirected Request response from a server MAY retry the request -- whether the request method is idempotent or not -- over a different connection. This is possible if a connection is reusedor if an alternative service is selected <a href="https://tools.ietf.org/html/rfc7540#ref-ALT-SVC">ALT-SVC</a>.
+Clients receiving a 421 Misdirected Request response from a server MAY retry the request -- whether the request method is idempotent or not -- over a different connection. This is possible if a connection is reusedor if an alternative service is selected ALT-SVC.
 
 This status code MUST NOT be generated by proxies.
 
@@ -457,7 +457,7 @@ A 421 response is cacheable by default, i.e., unless otherwise indicated by the 
 	{
 		Code: 422,
 		Name: "Unprocessable Entity",
-		Description: `The server understands the content type of the request entity (hence a <a href="/415">415 Unsupported Media Type</a> status code is inappropriate), and the syntax of the request entity is correct (thus a <a href="/400">400 Bad Request</a> status code is inappropriate) but was unable to process the contained instructions.
+		Description: `The server understands the content type of the request entity (hence a 415 Unsupported Media Type status code is inappropriate), and the syntax of the request entity is correct (thus a 400 Bad Request status code is inappropriate) but was unable to process the contained instructions.
 
 For example, this error condition may occur if an XML request body contains well-formed (i.e., syntactically correct), but semantically erroneous, XML instructions.`,
 	},
@@ -567,7 +567,7 @@ Responses with the 431 status code MUST NOT be stored by a cache.`,
 	{
 		Code: 444,
 		Name: "Connection Closed Without Response",
-		Description: `A non-standard status code used to instruct <a href="https://nginx.org">nginx</a> to close the connection without sending a response to the client, most commonly used to deny malicious or malformed requests.
+		Description: `A non-standard status code used to instruct nginx to close the connection without sending a response to the client, most commonly used to deny malicious or malformed requests.
 
 This status code is not seen by the client, it only appears in nginx log files.`,
 	},
@@ -600,12 +600,12 @@ The use of the 451 status code implies neither the existence nor non- existence 
 
 Note that in many cases clients can still access the denied resource by using technical countermeasures such as a VPN or the Tor network.
 
-A 451 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls; see <a href="https://tools.ietf.org/html/rfc7234">RFC7234</a>.`,
+A 451 response is cacheable by default; i.e., unless otherwise indicated by the method definition or explicit cache controls; see RFC7234.`,
 	},
 	{
 		Code:        499,
 		Name:        "Client Closed Request",
-		Description: `A non-standard status code introduced by <a href="https://nginx.org">nginx</a> for the case when a client closes the connection while nginx is processing the request.`,
+		Description: `A non-standard status code introduced by nginx for the case when a client closes the connection while nginx is processing the request.`,
 	},
 	{
 		Code:        500,
@@ -645,7 +645,7 @@ Note: The existence of the 503 status code does not imply that a server has to u
 		Name: "HTTP Version Not Supported",
 		Description: `The server does not support, or refuses to support, the major version of HTTP that was used in the request message.
 
-The server is indicating that it is unable or unwilling to complete the request using the same major version as the client, as described in <a href="https://tools.ietf.org/html/rfc7230#section-2.6">Section 2.6 of RFC7230</a>, other than with this error message. The server SHOULD generate a representation for the 505 response that describes why that version is not supported and what other protocols are supported by that server.`,
+The server is indicating that it is unable or unwilling to complete the request using the same major version as the client, as described in Section 2.6 of RFC7230, other than with this error message. The server SHOULD generate a representation for the 505 response that describes why that version is not supported and what other protocols are supported by that server.`,
 	},
 	{
 		Code:        506,
