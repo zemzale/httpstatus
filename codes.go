@@ -351,7 +351,7 @@ The server SHOULD generate a payload containing a list of available representati
 		Name: "Proxy Authentication Required",
 		Description: `Similar to 401 Unauthorized, but it indicates that the client needs to authenticate itself in order to use a proxy.
 
-The proxy MUST send a Proxy-Authenticate header field<sup>1</sup> containing a challenge applicable to that proxy for the target resource. The client MAY repeat the request with a new or replaced Proxy-Authorization header field<sup>2</sup>.`,
+The proxy MUST send a Proxy-Authenticate header field containing a challenge applicable to that proxy for the target resource. The client MAY repeat the request with a new or replaced Proxy-Authorization header field.`,
 	},
 	{
 		Code: 408,
