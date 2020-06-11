@@ -112,7 +112,8 @@ Since the 205 status code implies that no additional content will be provided, a
 		Description: `The server is successfully fulfilling a range request for the target resource by transferring one or more parts of the selected representation that correspond to the satisfiable ranges found in the request's Range header field.
 
 If a single part is being transferred, the server generating the 206 response MUST generate a Content-Range header field, describing what range of the selected representation is enclosed, and a payload consisting of the range. For example:
-<pre><code>HTTP/1.1 206 Partial Content
+---
+HTTP/1.1 206 Partial Content
 Date: Wed, 15 Nov 1995 06:25:24 GMT
 Last-Modified: Wed, 15 Nov 1995 04:58:08 GMT
 Content-Range: bytes 21010-47021/47022
@@ -120,11 +121,12 @@ Content-Length: 26012
 Content-Type: image/gif
 
 ... 26012 bytes of partial image data ...
-</code></pre>
+---
 If multiple parts are being transferred, the server generating the 206 response MUST generate a "multipart/byteranges" payload, and a Content-Type header field containing the multipart/byteranges media type and its required boundary parameter. To avoid confusion with single-part responses, a server MUST NOT generate a Content-Range header field in the HTTP header section of a multiple part response (this field will be sent in each part instead).
 
 Within the header area of each body part in the multipart payload, the server MUST generate a Content-Range header field corresponding to the range being enclosed in that body part. If the selected representation would have had a Content-Type header field in a 200 OK response, the server SHOULD generate that same Content-Type field in the header area of each body part. For example:
-<pre><code>HTTP/1.1 206 Partial Content
+---
+HTTP/1.1 206 Partial Content
 Date: Wed, 15 Nov 1995 06:25:24 GMT
 Last-Modified: Wed, 15 Nov 1995 04:58:08 GMT
 Content-Length: 1741
@@ -141,7 +143,8 @@ Content-Range: bytes 7000-7999/8000
 
 ...the second range
 --THIS_STRING_SEPARATES--
-</code></pre>
+---
+
 When multiple ranges are requested, a server MAY coalesce any of the ranges that overlap, or that are separated by a gap that is smaller than the overhead of sending multiple parts, regardless of the order in which the corresponding byte-range-spec appeared in the received Range header field. Since the typical overhead between parts of a multipart/byteranges payload is around 80 bytes, depending on the selected representation's media type and the chosen boundary parameter length, it can be less efficient to transfer many small disjoint parts than it is to transfer the entire selected representation.
 
 A server MUST NOT generate a multipart response to a request for a single range, since a client that does not request multiple parts might not support multipart responses. However, a server MAY generate a multipart/byteranges payload with only a single body part if multiple ranges were requested and only one range was found to be satisfiable or only one range remained after coalescing. A client that cannot process a multipart/byteranges response MUST NOT generate a request that asks for multiple ranges.
@@ -427,10 +430,11 @@ The format problem might be due to the request's indicated Content-Type or Conte
 For byte ranges, failing to overlap the current extent means that the first-byte-pos of all of the byte-range-spec values were greater than the current length of the selected representation. When this status code is generated in response to a byte-range request, the sender SHOULD generate a Content-Range header field specifying the current length of the selected representation.
 
 For example:
-<pre><code>HTTP/1.1 416 Range Not Satisfiable
+---
+HTTP/1.1 416 Range Not Satisfiable
 Date: Fri, 20 Jan 2012 15:41:54 GMT
 Content-Range: bytes */47022
-</code></pre>
+---
 Note: Because servers are free to ignore Range, many implementations will simply respond with the entire selected representation in a 200 OK response. That is partly because most clients are prepared to receive a 200 OK to complete the task (albeit less efficiently) and partly because clients might not stop making an invalid partial request until they have received a complete representation. Thus, clients cannot depend on receiving a 416 Range Not Satisfiable response even when it is most appropriate.`,
 	},
 	{
@@ -483,13 +487,15 @@ For example, if a command in a PROPPATCH method fails, then, at minimum, the res
 The server MUST send an Upgrade header field in a 426 response to indicate the required protocol(s)
 
 Example:
-<pre><code>HTTP/1.1 426 Upgrade Required
+---
+HTTP/1.1 426 Upgrade Required
 Upgrade: HTTP/3.0
 Connection: Upgrade
 Content-Length: 53
 Content-Type: text/plain
 
-This service requires use of the HTTP/3.0 protocol.`,
+This service requires use of the HTTP/3.0 protocol.
+---`,
 	},
 	{
 		Code: 428,
@@ -499,7 +505,8 @@ This service requires use of the HTTP/3.0 protocol.`,
 Its typical use is to avoid the "lost update" problem, where a client GETs a resource's state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict. By requiring requests to be conditional, the server can assure that clients are working with the correct copies.
 
 Responses using this status code SHOULD explain how to resubmit the request successfully. For example:
-<pre><code>HTTP/1.1 428 Precondition Required
+---
+HTTP/1.1 428 Precondition Required
 Content-Type: text/html
 
 <html>
@@ -511,7 +518,7 @@ Content-Type: text/html
     <p>This request is required to be conditional; try using "If-Match".</p>
   </body>
 </html>
-</code></pre>
+---
 Responses with the 428 status code MUST NOT be stored by a cache.`,
 	},
 	{
@@ -522,7 +529,8 @@ Responses with the 428 status code MUST NOT be stored by a cache.`,
 The response representations SHOULD include details explaining the condition, and MAY include a Retry-After header indicating how long to wait before making a new request.
 
 For example:
-<pre><code>HTTP/1.1 429 Too Many Requests
+---
+HTTP/1.1 429 Too Many Requests
 Content-Type: text/html
 Retry-After: 3600
 
@@ -536,7 +544,7 @@ Retry-After: 3600
     logged in user. Try again soon.</p>
   </body>
 </html>
-</code></pre>
+---
 Note that this specification does not define how the origin server identifies the user, nor how it counts requests. For example, an origin server that is limiting request rates can do so based upon counts of requests on a per-resource basis, across the entire server, or even among a set of servers. Likewise, it might identify the user by its authentication credentials, or a stateful cookie.
 
 Responses with the 429 status code MUST NOT be stored by a cache.`,
@@ -548,8 +556,9 @@ Responses with the 429 status code MUST NOT be stored by a cache.`,
 
 It can be used both when the set of request header fields in total is too large, and when a single header field is at fault.  In the latter case, the response representation SHOULD specify which header field was too large.
 
-For example:
-<pre><code>HTTP/1.1 431 Request Header Fields Too Large
+For example:-
+---
+HTTP/1.1 431 Request Header Fields Too Large
 Content-Type: text/html
 
 <html>
@@ -561,7 +570,7 @@ Content-Type: text/html
     <p>The "Example" header was too large.</p>
   </body>
 </html>
-</code></pre>
+---
 Responses with the 431 status code MUST NOT be stored by a cache.`,
 	},
 	{
@@ -579,7 +588,8 @@ This status code is not seen by the client, it only appears in nginx log files.`
 The server in question might not be an origin server. This type of legal demand typically most directly affects the operations of ISPs and search engines.
 
 Responses using this status code SHOULD include an explanation, in the response body, of the details of the legal demand: the party making it, the applicable legislation or regulation, and what classes of person and resource it applies to. For example:
-<pre><code>HTTP/1.1 451 Unavailable For Legal Reasons
+---
+HTTP/1.1 451 Unavailable For Legal Reasons
 Link: <https://spqr.example.org/legislatione>; rel="blocked-by"
 Content-Type: text/html
 
@@ -595,7 +605,7 @@ Content-Type: text/html
     operated by the People's Front of Judea.</p>
   </body>
 </html>
-</code></pre>
+---
 The use of the 451 status code implies neither the existence nor non- existence of the resource named in the request. That is to say, it is possible that if the legal demands were removed, a request for the resource still might not succeed.
 
 Note that in many cases clients can still access the denied resource by using technical countermeasures such as a VPN or the Tor network.
@@ -693,11 +703,13 @@ A network operator wishing to require some authentication, acceptance of terms, 
 Unknown clients then have all traffic blocked, except for that on TCP port 80, which is sent to an HTTP server (the "login server") dedicated to "logging in" unknown clients, and of course traffic to the login server itself.
 
 For example, a user agent might connect to a network and make the following HTTP request on TCP port 80:
-<pre><code>GET /index.htm HTTP/1.1
+---
+GET /index.htm HTTP/1.1
 Host: www.example.com
-</code></pre>
+---
 Upon receiving such a request, the login server would generate a 511 response:
-<pre><code>HTTP/1.1 511 Network Authentication Required
+---
+HTTP/1.1 511 Network Authentication Required
 Content-Type: text/html
 
 <html>
@@ -711,7 +723,7 @@ Content-Type: text/html
     access.</p>
   </body>
 </html>
-</code></pre>
+---
 Here, the 511 status code assures that non-browser clients will not interpret the response as being from the origin server, and the META HTML element redirects the user agent to the login server.`,
 	},
 	{
