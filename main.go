@@ -7,6 +7,13 @@ import (
 )
 
 func main() {
+	if len(os.Args) == 1 {
+		for _, code := range HTTPCodes {
+			fmt.Printf("Code : %d\n", code.Code)
+			fmt.Printf("Name : %s\n", code.Name)
+		}
+		os.Exit(0)
+	}
 	inputCode, err := strconv.Atoi(os.Args[1])
 	if err != nil {
 		fmt.Println("Invalid code")
