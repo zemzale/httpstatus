@@ -4,14 +4,24 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+
+	"github.com/olekukonko/tablewriter"
 )
 
+func renderSummary() {
+	headers := []string{"Code", "Summary"}
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader(headers)
+
+	for _, code := range HTTPCodes {
+		table.Append([]string{strconv.Itoa(code.Code), code.Name})
+	}
+
+	table.Render()
+}
 func main() {
 	if len(os.Args) == 1 {
-		for _, code := range HTTPCodes {
-			fmt.Printf("Code : %d\n", code.Code)
-			fmt.Printf("Name : %s\n", code.Name)
-		}
+		renderSummary()
 		os.Exit(0)
 	}
 	inputCode, err := strconv.Atoi(os.Args[1])
