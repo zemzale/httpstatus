@@ -19,6 +19,20 @@ func renderSummary() {
 
 	table.Render()
 }
+
+func renderCode(code HTTPCode) {
+	headerTable := tablewriter.NewWriter(os.Stdout)
+	headerTable.SetHeader([]string{"Code", "Summary"})
+	headerTable.Append([]string{strconv.Itoa(code.Code), code.Name})
+	headerTable.Render()
+
+	//TODO @zemzale 30/07/20 Set table width to be the size of the terminal
+	descriptionTable := tablewriter.NewWriter(os.Stdout)
+	descriptionTable.SetHeader([]string{"Description"})
+	descriptionTable.Append([]string{code.Description})
+	descriptionTable.Render()
+}
+
 func main() {
 	if len(os.Args) == 1 {
 		renderSummary()
@@ -37,9 +51,7 @@ func main() {
 
 	for _, code := range HTTPCodes {
 		if code.Code == inputCode {
-			fmt.Printf("Code : %d\n", code.Code)
-			fmt.Printf("Name : %s\n", code.Name)
-			fmt.Printf("Description : %v\n", code.Description)
+			renderCode(code)
 			os.Exit(0)
 		}
 	}
