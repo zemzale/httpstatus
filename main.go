@@ -6,6 +6,11 @@ import (
 	"strconv"
 
 	"github.com/olekukonko/tablewriter"
+	"golang.org/x/crypto/ssh/terminal"
+)
+
+const (
+	TABLE_PADDING int = 4
 )
 
 func renderSummary() {
@@ -20,17 +25,33 @@ func renderSummary() {
 	table.Render()
 }
 
-func renderCode(code HTTPCode) {
+func renderCode(code HTTPCode, width int) {
 	headerTable := tablewriter.NewWriter(os.Stdout)
 	headerTable.SetHeader([]string{"Code", "Summary"})
 	headerTable.Append([]string{strconv.Itoa(code.Code), code.Name})
 	headerTable.Render()
 
-	//TODO @zemzale 30/07/20 Set table width to be the size of the terminal
 	descriptionTable := tablewriter.NewWriter(os.Stdout)
+	descriptionTable.SetColWidth(width)
 	descriptionTable.SetHeader([]string{"Description"})
 	descriptionTable.Append([]string{code.Description})
 	descriptionTable.Render()
+}
+
+func terminalWidth() (int, error) {
+	width, _, err := terminal.GetSize(0)
+	if err != nil {
+		return 0, err
+	}
+	return width, nil
+}
+
+func tableWidth() (int, error) {
+	fullWidth, err := terminalWidth()
+	if err != nil {
+		return 0, err
+	}
+	return fullWidth - TABLE_PADDING, nil
 }
 
 func main() {
@@ -51,7 +72,11 @@ func main() {
 
 	for _, code := range HTTPCodes {
 		if code.Code == inputCode {
-			renderCode(code)
+			width, err := tableWidth()
+			if err != nil {
+				width = 80
+			}
+			renderCode(code, width)
 			os.Exit(0)
 		}
 	}
